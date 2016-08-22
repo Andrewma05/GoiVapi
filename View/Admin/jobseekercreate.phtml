@@ -1,0 +1,131 @@
+
+<h4>
+<form method="post">
+    <fieldset>
+
+
+        <legend>Додати анкету шукача роботи</legend>
+
+
+
+        <div class="row"><div class="col-md-6 slabel">
+        <label> Прізвище:</div><div class="col-md-6 svalue">
+            <input type="text"  name="surname" value="<?=$form->surname?>">
+        </label><br><br></div></div>
+
+
+
+        <div class="row"><div class="col-md-6 slabel">
+        <label>Ім'я:</div><div class="col-md-6 svalue">
+            <input type="text" name="jobseekername" value="<?=$form->jobseekername?>">
+        </label><br><br></div></div>
+
+
+
+        <div class="row"><div class="col-md-6 slabel">
+        <label>По-батькові:</div><div class="col-md-6 svalue">
+            <input type="text" name="father" value="<?=$form->father?>">
+        </label><br><br></div></div>
+
+
+
+        <div class="row"><div class="col-md-6 slabel">
+                <label> Стать:</div><div class="col-md-6 svalue">
+                <select name="stat">
+                    <option value="male">
+                        чоловіча
+                    </option>
+                    <option value="female">
+                        жіноча
+                    </option>
+                </select>
+                </label><br><br></div></div>
+
+
+
+        <div class="row"><div class="col-md-6 slabel">
+        <label> Дата народження:</div><div class="col-md-6 svalue">
+            <input type="date" name="birthdate" value="<?=$form->birthdate?>">
+        </label><br><br></div></div>
+
+
+
+        <div class="row"><div class="col-md-6 slabel">
+        <label> Паспорт:</div><div class="col-md-6 svalue">
+            <input type="text" name="pasport" value="<?=$form->pasport?>">
+        </label><br><br></div></div>
+
+
+
+                <div class="row"><div class="col-md-6 slabel">
+        <label> Адреса:</div><div class="col-md-6 svalue">
+            <input type="text" name="adress" value="<?=$form->adress?>"><br>
+        </label><br></div></div>
+
+
+
+                <div class="row"><div class="col-md-6 slabel">
+        <label> Номер телефону:</div><div class="col-md-6 svalue">
+            <input type="text" name="contact" value="<?=$form->contact?>"><br>
+        </label><br></div></div>
+
+
+
+                <div class="row"><div class="col-md-6 slabel">
+        <label> E-mail:</div><div class="col-md-6 svalue">
+            <input type="email" name="email" value="<?=$form->email?>"><br>
+        </label><br></div></div>
+
+        <div class="row"><div class="col-md-6 slabel">
+                <label> Вид інвалідності:</div><div class="col-md-6 svalue">
+                            <select name="id_vud_inval">
+                                <?php foreach ($vud_invals as $vud_inval): ?>
+                                    <option value="<?=$vud_inval['id']?>">
+                                        <?=$vud_inval['vud']?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                            </label><a href="" class="btn btn-primary" role="button">Додати вид інвалідності</a></div>
+
+                </select>
+
+        </div><br>
+
+
+
+                <div class="row"><div class="col-md-6 slabel">
+        <label> Група інвалідності:</div><div class="col-md-6 svalue">
+            <select name="grup">
+                <option value="Без інвалідності">
+                    Без інвалідності
+                </option>
+                <option value="І А - група">
+                    І А - група
+                </option>
+                <option value="І Б - група">
+                    І Б - група
+                </option>
+                <option value="ІІ - група">
+                    ІІ - група
+                </option>
+                <option value="ІІІ - група">
+                    ІІІ - група
+                </option>
+            </select>
+        </label><br><br></div></div>
+
+
+                <div class="row"><div class="col-md-6 slabel">
+        <label> Дата звільнення з останнього місця роботи:</div><div class="col-md-6 svalue">
+            <input type="date" name="freedate" value="<?=$form->freedate?>">
+        </label><br><br></div></div>
+
+
+
+        
+    </fieldset>
+    <button class="btn btn-success btn-lg" type="submit"><i class="fa fa-plus-circle" aria-hidden="true"></i> Додати анкету</button>
+    <a href="/thirdpage" class="btn btn-danger btn-lg" role="button"><i class="fa fa-ban" aria-hidden="true"></i> Відмінити</a>
+</form>
+</h4>
+<b id="flash"><?=\Library\Session::getFlash()?></b>

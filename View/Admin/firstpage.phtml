@@ -1,0 +1,48 @@
+<h2 class="fontColorHeader">Вас вітає програма працевлаштування осіб з інвалідністю та інших верств населення
+    <?=$user['region']?></h2>
+<h2>
+    <div id="tyt">
+        Вами вибраний регіон роботи <?=$reg?>
+    </div>
+</h2>
+<h3>Керівник та відповідальна особа: <b><?=$user['surname']?>  <?=$user['username']?> <?=$user['father']?></b><br>
+    Початок роботи Програми: <b>2016 рік</b>
+</h3>
+
+<img src="img/01.png" />
+
+<br><br>
+<a href="/thirdpage" class="btn btn-primary" role="button">Перейти до бази даних</a>
+
+<h4><br>
+    <form>
+
+
+                <label> Змінити регіон роботи на:
+                <select id="search" name="search">
+                    <?php foreach ($regs as $reg): ?>
+                        <option value="<?=$reg['id']?>">
+                            <?=$reg['region']?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+                </label>
+
+
+        <a id="botn" class="btn btn-danger btn-md" role="button"><i class="fa fa-ban" aria-hidden="true"></i>ЗМІНИТИ</a>
+    </form>
+    <script>
+        $(document).ready(function() {
+
+            $('#botn').click(function () {
+                var searchValue = $('#search').val();
+//                alert(searchValue);
+                $.post('/changereg', {search: searchValue}).done(function(data) {
+                    $("#tyt").html(data);
+                });
+            });
+        });
+    </script>
+</h4>
+
+

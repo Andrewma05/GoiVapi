@@ -1,0 +1,20 @@
+<form method="post">
+    <fieldset>
+        <legend>Добавити попередні звернення шукача роботи:</legend>
+        <label>Куди звертався:
+            <input type="text" name="organization" value="<?=$form->organization?>">
+        </label><br>
+        <label>Дата звернення:
+            <input type="date" name="resort_date" value="<?=$form->resort_date?>">
+        </label><br>
+        <label> Посада:
+            <input type="text" name="posada" value="<?=$form->posada?>">
+        </label><br>
+        <label> Результат:
+            <input type="text" name="result" value="<?=$form->result?>">
+        </label><br>
+    </fieldset>
+    <button>Зберегти</button>
+</form>
+
+<b id="flash"><?=\Library\Session::getFlash()?></b>

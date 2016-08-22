@@ -1,0 +1,92 @@
+<div class="col-md-12">
+    <h4>
+<form method="post" class="form-inline">
+    <fieldset>
+        <legend>Додати працівника</legend>
+        
+        
+        <div class="row"><div class="col-md-6 slabel">
+        <label> Прізвище:</div><div class="col-md-6 svalue">
+            <input type="text"  name="surname" value="<?=$form->surname?>">
+        </label><br><br></div></div>
+
+
+        <div class="row"><div class="col-md-6 slabel">
+        <label>Ім'я:</div><div class="col-md-6 svalue">
+            <input type="text" name="username" value="<?=$form->username?>">
+        </label><br><br></div></div>
+
+
+        <div class="row"><div class="col-md-6 slabel">
+        <label>По-батькові:</div><div class="col-md-6 svalue">
+            <input type="text" name="father" value="<?=$form->father?>">
+        </label><br><br></div></div>
+
+
+        <div class="row"><div class="col-md-6 slabel">
+        <label> Дата початку роботи:</div><div class="col-md-6 svalue">
+            <input type="date" name="startwork" value="<?=$form->startwork?>">
+        </label><br><br></div></div>
+
+
+        <div class="row"><div class="col-md-6 slabel">
+        <label> Контакти:</div><div class="col-md-6 svalue">
+            <textarea name="contact" rows="7" value="<?=$form->contact?>"></textarea>
+        </label><br><br></div></div>
+
+
+        <div class="row"><div class="col-md-6 slabel">
+        <label> Виберіть фото:</div><div class="col-md-6 svalue">
+            <input type="file" accept="image/" name="foto">
+        </label><br><br></div></div>
+
+
+        <div class="row"><div class="col-md-6 slabel">
+        <label> Статус:</div><div class="col-md-6 svalue">
+            <select name="status">
+                <option value="2">
+                    керівник регіону
+                </option>
+                <option value="1">
+                    адміністратор
+                </option>
+                <option value="3">
+                    заблокувати
+                </option>
+            </select>
+        </label><br><br></div></div>
+
+
+        <div class="row"><div class="col-md-6 slabel">
+        <label> Регіон:</div><div class="col-md-6 svalue">
+            <select name="region">
+                <?php foreach ($regs as $reg): ?>
+                    <option value="<?=$reg['id']?>">
+                        <?=$reg['region']?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </label><br><br></div></div>
+
+
+        <div class="row"><div class="col-md-6 slabel">
+        <label> E-mail:</div><div class="col-md-6 svalue">
+            <input type="email" name="email" value="<?=$form->email?>"><br>
+        </label><br><br></div></div>
+
+
+
+        <label>
+            <input type="password" placeholder="пароль" name="password">
+        </label>
+        <br><br>
+
+
+
+    </fieldset>
+    <button class="btn btn-success btn-lg" type="submit"><i class="fa fa-plus-circle" aria-hidden="true"></i> Додати</button>
+    <a href="/thirdpage" class="btn btn-danger btn-lg" role="button"><i class="fa fa-ban" aria-hidden="true"></i> Відмінити</a>
+</form>
+    </h4>
+</div>
+<b id="flash"><?=\Library\Session::getFlash()?></b>

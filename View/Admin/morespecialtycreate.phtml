@@ -1,0 +1,12 @@
+<form method="post">
+    <fieldset>
+        <legend>Додаткові навики спеціальності шукача:</legend>
+
+        <label>Додаткова спецільність:
+            <input type="text" name="specialty" value="<?=$form->specialty?>">
+        </label><br>
+    </fieldset>
+    <button>Зберегти</button>
+</form>
+
+<b id="flash"><?=\Library\Session::getFlash()?></b>

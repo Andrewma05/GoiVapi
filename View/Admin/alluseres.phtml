@@ -1,0 +1,38 @@
+
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+
+            <td class="active"><h3>Прізвище</h3></td>
+            <td class="active"><h3>Ім'я</h3></td>
+            <td class="active"><h3>По-батькові</h3></td>
+            <td class="active"><h3>Регіон</h3></td>
+            <td class="active"><h3>Статус</h3></td>
+
+        </tr>
+
+
+        <?php if (!$useres==null){?>
+        <?php foreach ($useres as $user): ?>
+
+        <tr>
+            <td class="active"><?=$user['surname']?></td>
+            <td class="active"><?=$user['username']?></td>
+            <td class="active"><?=$user['father']?></td>
+            <td class="active"><?php
+                foreach ($regions as $region)
+                {
+
+                    if ($region['id']==$user['id_region']) {
+                        echo $region['region'];}
+                }
+                ?></td>
+            <td class="active"><?php if ($user['status']==1){echo 'адміністратор';}
+                elseif ($user['status']==2){echo 'керівник регіону';}
+                else{echo 'заблокований';}?></td>
+            <td><a href="/showuser/<?= $user['id'] ?>" class="btn btn-info" role="button"><i class="fa fa-search" aria-hidden="true"></i> Переглянути</a><br></td>
+        <tr>
+            <?php endforeach;}?>
+
+
+    </table>

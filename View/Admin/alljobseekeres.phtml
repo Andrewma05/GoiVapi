@@ -1,0 +1,53 @@
+<h4>
+    <input id="search" type="text"  name="search">
+    <a id="botn" class="btn btn-danger btn-md" role="button"><i class="fa fa-ban" aria-hidden="true"></i>ЗНАЙТИ</a>
+    
+    <script>
+        $(document).ready(function() {
+
+            $('#botn').click(function () {
+                var searchValue = $('#search').val();
+                $.post('/onejobseeker', {search: searchValue}).done(function(data) {
+                    $("#tyt").html(data);
+                });
+            });
+        });
+    </script>
+</h4>
+
+<div class="row">
+<div class="table-responsive" id="tyt">
+
+</div>
+
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+
+            <td class="active"><h3>Прізвище</h3></td>
+            <td class="active"><h3>Ім'я</h3></td>
+            <td class="active"><h3>По-батькові</h3></td>
+            <td class="active"><h3>Контакти</h3></td>
+      
+
+        </tr>
+
+
+<?php if (!$seekerses==null){?>
+    <?php foreach ($seekerses as $seekers): ?>
+
+        <tr>
+            
+            <td class="active"><?=$seekers['surname']?></td>
+            <td class="active"><?=$seekers['jobseekername']?></td>
+            <td class="active"><?=$seekers['father']?></td>
+            <td class="active"><?=$seekers['contact']?></td>
+
+            <td><a href="/showjobsearch/<?= $seekers['id'] ?>" class="btn btn-info" role="button"><i class="fa fa-search" aria-hidden="true"></i> Переглянути</a><br></td>
+        <tr>
+    <?php endforeach; }?>
+
+        
+    </table>
+</div>
+</div>

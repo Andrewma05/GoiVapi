@@ -1,0 +1,22 @@
+<form method="post">
+    <fieldset>
+        <legend>Добавити освіту шукача роботи:</legend>
+        
+        <label>Навчальний заклад:
+            <input type="text" name="school" value="<?=$form->school?>">
+        </label><br>
+        <label>Спеціальність:
+            <input type="text" name="specialty" value="<?=$form->specialty?>">
+        </label><br>
+        <label> Рівень освіти:
+            <input type="text" name="level_school" value="<?=$form->level_school?>">
+        </label><br>
+                <label> Дата закінчення:
+            <input type="date" name="freedate" value="<?=$form->freedate?>">
+        </label><br>
+
+    </fieldset>
+    <button>Зберегти</button>
+</form>
+
+<b id="flash"><?=\Library\Session::getFlash()?></b>

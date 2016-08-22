@@ -1,0 +1,61 @@
+<form method="post">
+    <fieldset>
+
+
+
+        <legend>Пошук:</legend>
+
+
+        <div class="row"><div class="col-md-6 slabel">
+        <label>Спеціальність:</div><div class="col-md-6 svalue">
+            <input type="text" name="specialty" value="<?=$form->specialty?>">
+        </label><br><br></div></div>
+
+        <div class="row"><div class="col-md-6 slabel">
+        <label> Регіон:</div><div class="col-md-6 svalue">
+            <select name="id_region">
+                <?php foreach ($regs as $reg): ?>
+                    <option value="<?=$reg['id']?>">
+                        <?=$reg['region']?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </label><br><br></div></div>
+
+
+        <div class="row"><div class="col-md-6 slabel">
+        <label> Графік роботи:</div><div class="col-md-6 svalue">
+            <select name="job_grapf">
+                <option value="1">
+                    Повний робочий день
+                </option>
+                <option value="2">
+                    Скорочений робочий день
+                </option>
+            </select>
+        </label><br></div></div>
+
+
+        <div class="row"><div class="col-md-6 slabel">        
+        <label> Тип роботи(основна, сумісництво):</div><div class="col-md-6 svalue">
+            <select name="sort_job">
+                <option value="1">
+                    Основна
+                </option>
+                <option value="2">
+                    Сумісництво
+                </option>
+            </select>
+        </label><br></div></div>
+
+                <div class="row"><div class="col-md-6 slabel">
+        <label> Очікуваний рівень заробітної плати, грн:</div><div class="col-md-6 svalue">
+            <input type="text" name="salary" value="<?=$form->salary?>">
+        </label><br><br></div></div>
+
+    </fieldset>
+    <button>Зберегти</button>
+</form>
+
+<b id="flash"><?=\Library\Session::getFlash()?></b>
+

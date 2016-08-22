@@ -1,0 +1,22 @@
+<form method="post">
+    <fieldset>
+        <legend>Добавити стаж шукача роботи:</legend>
+        
+        <label>Назва установи:
+            <input type="text" name="organization" value="<?=$form->organization?>">
+        </label><br>
+        <label>Загальний стаж(в місяцях):
+            <input type="text" name="experience" value="<?=$form->experience?>">
+        </label><br>
+        <label> спеціальність(професія):
+            <input type="text" name="specialty" value="<?=$form->specialty?>">
+        </label><br>
+        <label> Посада:
+            <input type="text" name="posada" value="<?=$form->posada?>">
+        </label><br>
+
+    </fieldset>
+    <button>Зберегти</button>
+</form>
+
+<b id="flash"><?=\Library\Session::getFlash()?></b>

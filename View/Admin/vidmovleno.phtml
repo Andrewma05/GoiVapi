@@ -1,0 +1,15 @@
+<form method="post">
+    <fieldset>
+        <legend>Відмовити у наданні допомоги у працевлаштуванні</legend>
+        
+            <label>Коментар:
+                <input type="text" name="made" value="<?=$form->made?>">
+            </label>
+        
+    </fieldset>
+    <button>Зберегти</button>
+</form>
+
+<b id="flash"><?=\Library\Session::getFlash()?></b>
+
+

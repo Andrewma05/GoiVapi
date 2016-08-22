@@ -1,0 +1,21 @@
+<form method="post">
+    <fieldset>
+        <legend>Змінити попереднє звернення шукача роботи:</legend>
+        <label>Куди звертався:
+            <input type="text" name="organization" value="<?=$oldpastresort['organization']?>">
+        </label><br>
+        <label>Дата звернення:
+            <input type="date" name="resort_date" value="<?=$oldpastresort['resort_date']?>">
+        </label><br>
+        <label> Результат:
+            <input type="text" name="result" value="<?=$oldpastresort['result']?>">
+        </label><br>
+        <label> Посада:
+            <input type="text" name="posada" value="<?=$oldpastresort['posada']?>">
+        </label><br>
+
+    </fieldset>
+    <button>Зберегти</button>
+</form>
+
+<b id="flash"><?=\Library\Session::getFlash()?></b>

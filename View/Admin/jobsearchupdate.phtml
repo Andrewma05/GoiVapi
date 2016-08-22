@@ -1,0 +1,67 @@
+<form method="post">
+    <fieldset>
+        <legend>Змінити пошук:</legend>
+
+        <div class="row"><div class="col-md-6 slabel">
+                <label>Спеціальність:</div><div class="col-md-6 svalue">
+                <input type="text" name="specialty" value="<?=$oldjobsearch['specialty']?>">
+                </label><br><br></div></div>
+
+        <div class="row"><div class="col-md-6 slabel">
+                <label> Регіон:</div><div class="col-md-6 svalue">
+                <select name="id_region">
+                    <option value="<?=$oldjobsearch['id_region']?>">
+                        Внесеий при створенні
+                    </option>
+                    <?php foreach ($regs as $reg): ?>
+                        <option value="<?=$reg['id']?>">
+                            <?=$reg['region']?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+                </label><br><br></div></div>
+
+        <div class="row"><div class="col-md-6 slabel">
+                <label> Графік роботи:</div><div class="col-md-6 svalue">
+                <select name="job_grapf">
+                    <option value="<?=$oldjobsearch['job_grapf']?>">
+                        <?php if ($oldjobsearch['job_grapf']==1){echo 'Повний робочий день';}
+                        else{echo 'Скорочений робочий день';}?>
+                    </option>
+                    <option value="1">
+                        Повний робочий день
+                    </option>
+                    <option value="2">
+                        Скорочений робочий день
+                    </option>
+                </select>
+                </label><br></div></div>
+
+
+        <div class="row"><div class="col-md-6 slabel">
+                <label> Тип роботи(основна, сумісництво):</div><div class="col-md-6 svalue">
+                <select name="sort_job">
+                    <option value="<?=$oldjobsearch['sort_job']?>">
+                        <?php if ($oldjobsearch['sort_job']==1){echo 'Основна';}
+                        else{echo 'Сумісництво';}?>
+                    </option>
+                    <option value="1">
+                        Основна
+                    </option>
+                    <option value="2">
+                        Сумісництво
+                    </option>
+                </select>
+                </label><br></div></div>
+
+        <div class="row"><div class="col-md-6 slabel">
+                <label> Очікуваний рівень заробітної плати, грн:</div><div class="col-md-6 svalue">
+                <input type="text" name="salary" value="<?=$oldjobsearch['salary']?>">
+                </label><br><br></div></div>
+
+    </fieldset>
+    <button>Зберегти</button>
+</form>
+
+<b id="flash"><?=\Library\Session::getFlash()?></b>
+

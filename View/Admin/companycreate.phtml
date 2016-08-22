@@ -1,0 +1,46 @@
+<div class="col-md-12">
+    <h4>
+        <form method="post" class="form-inline">
+            <fieldset>
+                <legend>Добавити компанію:</legend>
+
+
+
+
+
+
+                <div class="row"><div class="col-md-6 slabel">
+                        <label> Назва компанії:</div><div class="col-md-6 svalue">
+                        <input type="text" name="company" value="<?=$form->company?>"><br>
+                        </label><br><br></div></div>
+
+                <div class="row"><div class="col-md-6 slabel">
+                        <label> ПІБ керівника:</div><div class="col-md-6 svalue">
+                        <input type="text" name="PIB" value="<?=$form->PIB?>"><br>
+                        </label><br><br></div></div>
+
+
+                <div class="row"><div class="col-md-6 slabel">
+                        <label> Контакти:</div><div class="col-md-6 svalue">
+                        <textarea name="contact" rows="7" value="<?=$form->contact?>"></textarea>
+                        </label><br><br></div></div>
+
+                <div class="row"><div class="col-md-6 slabel">
+                        <label> Телефон:</div><div class="col-md-6 svalue">
+                        <input type="text" name="telefon" value="<?=$form->telefon?>"><br>
+                        </label><br><br></div></div>
+
+                <div class="row"><div class="col-md-6 slabel">
+                        <label> E-mail:</div><div class="col-md-6 svalue">
+                        <input type="email" name="email" value="<?=$form->email?>"><br>
+                        </label><br><br></div></div>
+
+
+
+
+            </fieldset>
+            <button>Зберегти</button>
+        </form>
+    </h4>
+</div>
+<b id="flash"><?=\Library\Session::getFlash()?></b>

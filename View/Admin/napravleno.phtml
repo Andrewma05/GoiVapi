@@ -1,0 +1,33 @@
+<form method="post">
+    <fieldset>
+        <legend>Добавити пророблену роботу:</legend>
+        <label>
+            <select name="id_company">
+                <option value="1">
+                    Місцеві органи державної влади
+                </option>
+                <option value="2">
+                    Центри зайнятості
+                </option>
+                <option value="3">
+                    Громадські об'єднання
+                </option>
+                <option value="4">
+                    Приватний бізнес
+                </option>
+            </select>
+        </label>
+        <label>Коментар
+            <input type="text" name="made" value="<?=$form->made?>">
+        </label>
+
+
+
+
+    </fieldset>
+    <button>Зберегти</button>
+</form>
+
+<b id="flash"><?=\Library\Session::getFlash()?></b>
+
+

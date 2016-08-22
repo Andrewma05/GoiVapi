@@ -1,0 +1,13 @@
+<db>
+<host>localhost;port=3306</host>
+<user>root</user>
+<pass></pass>
+<dbname>ddm_gct</dbname>
+</db>
+
+<!--<db>-->
+<!--<host>localhost</host>-->
+<!--<user>root</user>-->
+<!--<pass/>-->
+<!--<dbname>Work</dbname>-->
+<!--</db>-->

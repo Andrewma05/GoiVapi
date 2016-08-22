@@ -1,0 +1,256 @@
+<!--<div class="row">-->
+<!--    <h6>-->
+<!--        <a href="javascript:history.back();" class="thumbnail">-->
+<!--        <i class="fa fa-arrow-left fa-3x" aria-hidden="true"> Повернутися до списку шукачів</i>-->
+<!--        </a>-->
+<!--    </h6>-->
+<!--</div>-->
+
+<div class="row">
+
+        <h6>
+            <a href="/alljobseekeres" class="thumbnail">
+                    <i class="fa fa-arrow-left fa-3x" aria-hidden="true"> Повернутися до списку шукачів</i>
+            </a>
+        </h6>
+
+</div>
+<h1 class="stitleanketa">АНКЕТА</h1>
+
+<div class="slabel"> Статус:<?= $seekers['statuswork'] ?></div><br>
+<div class="slabel"> Дата створення анкети:<?= $seekers['stvoreno'] ?></div><br>
+<div class="text-right"><a href="/jobseekerupdate/<?= $seekers['id'] ?>" class="btn btn-success" role="button">Редагувати</a><br><br>
+<!--<div class="text-right"><a  class="btn btn-warning" role="button">Працевлаштовано</a>-->
+    <div class="text-right"><a href="/pratsevlashtovano/<?= $seekers['id'] ?>" class="btn btn-warning" role="button">Працевлаштовано</a></div><br>
+    
+<h3>
+    <div class="row svalueanketa">
+        ПІБ: <span class="slabelanketa"><?= $seekers['surname'] ?> <?= $seekers['jobseekername'] ?> <?= $seekers['father'] ?></span><br>
+
+        Стать: <span class="slabelanketa">
+            <?php if ($seekers['stat']=='male'){echo 'чоловіча';}
+            elseif ($seekers['stat']=='female'){echo 'жіноча';}
+            else{echo 'Стать не задана';}?>
+        </span><br>
+        Дата народження: <span class="slabelanketa"><?= $seekers['birthdate'] ?></span><br>
+        Паспорт: <span class="slabelanketa"><?= $seekers['pasport'] ?></span><br>
+        Адреса: <span class="slabelanketa"><?= $seekers['adress'] ?></span><br>
+        Номер телефону: <span class="slabelanketa"><?= $seekers['contact'] ?></span><br>
+        E-mail: <span class="slabelanketa"><?= $seekers['email'] ?></span><br>
+        Група інвалідності: <span class="slabelanketa"> <?=$seekers['grup']?></span><br>
+        Дата звільнення з останнього місця роботи: <span class="slabelanketa"><?= $seekers['freedate'] ?></span><br>
+
+    </div>
+</h3>
+
+<!---->
+
+
+<div class="row svalueanketa">
+    <hr class="coloris">
+<h1>Освіта</h1>
+    <a href="/educationcreate/<?= $seekers['id'] ?>" class="btn btn-primary" role="button">Додати освіту</a>
+
+    <br>
+    <h3 class="svalueanketa">
+        <table class="table table-striped">
+
+        <?php if (!$educations==null){?>
+            <?php foreach ($educations as $education): ?>
+                <tr>
+                    <td>
+                Навчальний заклад: <span class="slabelanketa"><?=$education['school']?></span><br>
+                Спеціальність: <span class="slabelanketa"><?=$education['specialty']?></span><br>
+                Рівень освіти: <span class="slabelanketa"><?=$education['level_school']?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                Дата закінчення: <span class="slabelanketa"><?=$education['freedate']?></span><br>
+                        <div class="text-right"><a href="/educationupdate/<?=$education['id']?>" class="btn btn-success" role="button">Редагувати</a> <a class="btn btn-danger" role="button">Видалити</a></div>
+
+                    </td>
+                </tr>
+        <?php endforeach; }?>
+        </table>
+    </h3>
+</div>
+
+
+<!---->
+
+
+<div class="row svalueanketa">
+    <hr class="coloris">
+<h1>Останнє місце роботи</h1>
+    <a href="/experiencecreate/<?= $seekers['id'] ?>" class="btn btn-primary" role="button">Додати стаж</a>
+    <br>
+    <h3 class="svalueanketa">
+        <table class="table table-striped">
+
+            <?php if (!$experiences==null){?>
+                <?php foreach ($experiences as $experience): ?>
+                <tr>
+                    <td>
+                        Назва установи:<span class="slabelanketa"><?=$experience['organization']?></span><br>
+                        Загальний стаж(в місяцях):<span class="slabelanketa"><?=$experience['experience']?></span><br>
+                        Спеціальність(професія):<span class="slabelanketa"><?=$experience['specialty']?></span><br>
+                        Посада:<span class="slabelanketa"><?=$experience['posada']?></span><br>
+                                <div class="text-right"><a href="/experienceupdate/<?=$experience['id']?>" class="btn btn-success" role="button">Редагувати</> 
+                                <a class="btn btn-danger experience<?=$experience['id']?>" role="button">Видалити</a></div>
+
+                    </td>
+                </tr>
+                    <script>
+                        $('.experience<?=$experience['id']?>').click(function() {
+                            $.get('/delete/<?=$experience['id']?>');
+                            $(this).parent().parent().hide();
+                        });
+                    </script>
+
+
+
+            <?php endforeach; }?>
+        </table>
+    </h3>
+</div>
+
+
+<!--        -->
+
+
+<div class="row svalueanketa">
+    <hr class="coloris">
+<h1>Попередні звернення</h1>
+    <a href="/pastresortcreate/<?= $seekers['id'] ?>" class="btn btn-primary" role="button">Додати попереднє звернення</a>
+    <br>
+    <h3 class="svalueanketa">
+        <table class="table table-striped">
+            <?php if (!$pastresorts==null){?>
+                <?php foreach ($pastresorts as $pastresort): ?>
+                <tr>
+                    <td>
+                    Куди звертався:<span class="slabelanketa"><?=$pastresort['organization']?></span><br>
+                    Дата звернення:<span class="slabelanketa"><?=$pastresort['resort_date']?></span><br>
+                    Результат:<span class="slabelanketa"><?=$pastresort['result']?></span><br>
+                    Посада:<span class="slabelanketa"><?=$pastresort['posada']?></span><br>
+                        <div class="text-right"><a href="/pastresortupdate/<?=$pastresort['id']?>" class="btn btn-success" role="button">Редагувати</> <a class="btn btn-danger" role="button">Видалити</a></div>
+
+                    </td>
+                </tr>
+            <?php endforeach; }?>
+        </table>
+    </h3>
+</div>
+
+<!--            -->
+
+<div class="row svalueanketa">
+    <hr class="coloris">
+<h1>Додаткові спеціальності</h1>
+    <a href="/morespecialtycreate/<?= $seekers['id'] ?>" class="btn btn-primary" role="button">Додати спеціальності</a>
+    <br>
+    <h3 class="svalueanketa">
+        <table class="table table-striped">
+            <?php if (!$morespecialtes==null){?>
+                <?php foreach ($morespecialtes as $morespecialty): ?>
+                <tr>
+                    <td>
+                    Додаткова спецільність:<span class="slabelanketa"><?=$morespecialty['specialty']?></span><br>
+                        <div class="text-right"><a href="/morespecialtyupdate/<?=$morespecialty['id']?>" class="btn btn-success" role="button">Редагувати</a> <a class="btn btn-danger" role="button">Видалити</a></div>
+
+                    </td>
+                </tr>
+            <?php endforeach; }?>
+        </table>
+    </h3>
+</div>
+
+<!--            -->
+
+<div class="row svalueanketa">
+    <hr class="coloris">
+<h1>Додаткові навички</h1>
+    <a href="/moreskillscreate/<?= $seekers['id'] ?>" class="btn btn-primary" role="button">Додати навики</a>
+    <br>
+    <h3 class="svalueanketa">
+        <table class="table table-striped">
+            <?php if (!$moreskillses==null){?>
+                <?php foreach ($moreskillses as $moreskills): ?>
+                    <tr>
+                        <td>
+                            Додаткові навички:<span class="slabelanketa"><?=$moreskills['skills']?></span><br>
+                                <div class="text-right"><a href="/moreskillsupdate/<?=$moreskills['id']?>" class="btn btn-success" role="button">Редагувати</a> <a class="btn btn-danger" role="button">Видалити</a></div>
+
+                        </td>
+                    </tr>
+            <?php endforeach; }?>
+        </table>
+    </h3>
+</div>
+
+<!--    -->
+
+<div class="row svalueanketa">
+    <hr class="coloris">
+<h1>Пошук</h1>
+    <a href="/jobsearchcreate/<?= $seekers['id'] ?>" class="btn btn-primary" role="button">Додати пошук</a>
+    <br>
+    <h3 class="svalueanketa">
+        <table class="table table-striped">
+            <?php if (!$searches==null){?>
+                <?php foreach ($searches as $search): ?>
+                <tr>
+                    <td>
+                        Спеціальність:<span class="slabelanketa"><?=$search['specialty']?></span><br>
+                        Графік роботи:<span class="slabelanketa"><?=$search['job_grapf']?></span><br>
+                        Тип роботи(основна, сумісництво):<span class="slabelanketa"><?=$search['sort_job']?></span><br>
+                        Очікуваний рівень заробітної плати, грн:<span class="slabelanketa"><?=$search['salary']?></span><br>
+                            <div class="text-right"><a href="/jobsearchupdate/<?=$search['id']?>" class="btn btn-success" role="button">Редагувати</a> <a class="btn btn-danger" role="button">Видалити</a></div>
+
+                    </td>
+                </tr>
+            <?php endforeach; }?>
+        </table>
+    </h3>
+</div>
+
+    <!--            -->
+
+    <div class="row svalueanketa">
+        <hr class="coloris">
+        <h1>Пророблена робота</h1>
+        <a href="/moremadecreate/<?= $seekers['id'] ?>" class="btn btn-primary" role="button">Додати нові дії</a>
+        <a href="/vidmovleno/<?= $seekers['id'] ?>" class="btn btn-danger" role="button">Відмовлено</a>
+        <a href="/napravleno/<?= $seekers['id'] ?>" class="btn btn-info" role="button">Направлено</a>
+        <a href="/pratsevlashtovano/<?= $seekers['id'] ?>" class="btn btn-warning" role="button">Працевлаштовано</a>
+        <br>
+        <h3 class="svalueanketa">
+            <table class="table table-striped">
+                <?php if (!$moremades==null){?>
+                    <?php foreach ($moremades as $moremade): ?>
+                        <tr>
+                            <td>
+                                <span class="slabelanketa"><?=$moremade['vuddialnosti']?></span><br>
+                                <?php if ($moremade['id_company']>=1 && $moremade['id_company']<5){
+                                    echo '<span class="slabelanketa">';
+                                    if ($moremade['id_company']==1){echo 'Місцеві органи державної влади';}
+                                    elseif ($moremade['id_company']==2){echo 'Центри зайнятості';}
+                                    elseif ($moremade['id_company']==3){echo "Громадські об'єднання";}
+                                    elseif ($moremade['id_company']==4){echo 'Приватний бізнес';};
+                                    echo '</span><br>';
+                                };?>
+                                <span><?=$moremade['made']?></span><br>
+                                <div class="text-right"><a href="/moremadeupdate/<?=$moremade['id']?>" class="btn btn-success" role="button">Редагувати</a> <a class="btn btn-danger" role="button">Видалити</a></div>
+                            </td>
+                        </tr>
+                    <?php endforeach; }?>
+            </table>
+        </h3>
+    </div>
+
+    <div class="row">
+        <center>
+        <h6>
+            <a href="/alljobseekeres" class="thumbnail">
+                <i class="fa fa-arrow-left fa-3x" aria-hidden="true"> Повернутися до списку шукачів</i>
+            </a>
+        </h6>
+        </center>
+    </div>

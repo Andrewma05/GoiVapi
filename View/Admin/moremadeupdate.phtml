@@ -1,0 +1,22 @@
+<form method="post">
+    <fieldset>
+        <legend>Змінити інформацію про пророблену роботу:</legend>
+        <div>
+        <label>
+            <select name="vuddialnosti">
+                <option value="<?=$oldmoremade['vuddialnosti']?>">
+                    <?=$oldmoremade['vuddialnosti']?>
+                </option>
+            </select>
+        </label>
+        </div>
+        <div>
+        <label>результат
+            <input type="text" name="made" value="<?=$oldmoremade['made']?>">
+        </label>
+        </div><br>
+    </fieldset>
+    <button>Зберегти</button>
+</form>
+
+<b id="flash"><?=\Library\Session::getFlash()?></b>

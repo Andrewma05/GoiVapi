@@ -1,0 +1,22 @@
+<form method="post">
+    <fieldset>
+        <legend>Змінити освіту шукача роботи:</legend>
+
+        <label>Навчальний заклад:
+            <input type="text" name="school" value="<?=$oldeducation['school']?>">
+        </label><br>
+        <label>Спеціальність:
+            <input type="text" name="specialty" value="<?=$oldeducation['specialty']?>">
+        </label><br>
+        <label> Рівень освіти:
+            <input type="text" name="level_school" value="<?=$oldeducation['level_school']?>">
+        </label><br>
+        <label> Дата закінчення:
+            <input type="date" name="freedate" value="<?=$oldeducation['freedate']?>">
+        </label><br>
+
+    </fieldset>
+    <button>Зберегти</button>
+</form>
+
+<b id="flash"><?=\Library\Session::getFlash()?></b>

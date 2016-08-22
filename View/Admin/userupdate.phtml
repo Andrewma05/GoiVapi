@@ -1,0 +1,88 @@
+<div class="col-md-12">
+    <h4>
+        <form method="post" class="form-inline">
+            <fieldset>
+                <legend>Добавити користувача:</legend>
+
+
+                <div class="row"><div class="col-md-6 slabel">
+                        <label> Прізвище:</div><div class="col-md-6 svalue">
+                        <input type="text"  name="surname" value="<?=$olduser['surname']?>">
+                        </label><br><br></div></div>
+
+
+                <div class="row"><div class="col-md-6 slabel">
+                        <label>Ім'я:</div><div class="col-md-6 svalue">
+                        <input type="text" name="username" value="<?=$olduser['username']?>">
+                        </label><br><br></div></div>
+
+
+                <div class="row"><div class="col-md-6 slabel">
+                        <label>По-батькові:</div><div class="col-md-6 svalue">
+                        <input type="text" name="father" value="<?=$olduser['father']?>">
+                        </label><br><br></div></div>
+
+
+                <div class="row"><div class="col-md-6 slabel">
+                        <label> Дата початку роботи:</div><div class="col-md-6 svalue">
+                        <input type="date" name="startwork" value="<?=$olduser['startwork']?>">
+                        </label><br><br></div></div>
+
+
+                <div class="row"><div class="col-md-6 slabel">
+                        <label> Контакти:</div><div class="col-md-6 svalue">
+                        <textarea name="contact" rows="7"><?=$olduser['contact']?></textarea>
+                        </label><br><br></div></div>
+
+
+                <div class="row"><div class="col-md-6 slabel">
+                        <label> Статус:</div><div class="col-md-6 svalue">
+                        <select name="status">
+                            <option value="<?=$olduser['status']?>">
+                                <?php if ($olduser['status']==1){echo 'адміністратор';}
+                                elseif ($olduser['status']==2){echo 'керівник регіону';}
+                                else{echo 'заблокувати';}?>
+                            </option>
+                            <option value="2">
+                                керівник регіону
+                            </option>
+                            <option value="1">
+                                адміністратор
+                            </option>
+                            <option value="3">
+                                заблокувати
+                            </option>
+                        </select>
+                        </label><br><br></div></div>
+
+
+                <div class="row"><div class="col-md-6 slabel">
+                        <label> Регіон:</div><div class="col-md-6 svalue">
+                        <select name="id_region">
+                            <?php foreach ($regs as $reg): ?>
+                                <option value="<?=$reg['id']?>">
+                                    <?=$reg['region']?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                        </label><br><br></div></div>
+
+
+                <div class="row"><div class="col-md-6 slabel">
+                        <label> E-mail:</div><div class="col-md-6 svalue">
+                        <input type="email" name="email" value="<?=$olduser['email']?>"><br>
+                        </label><br><br></div></div>
+
+
+
+                
+                <br><br>
+
+
+
+            </fieldset>
+            <button>Зберегти</button>
+        </form>
+    </h4>
+</div>
+<b id="flash"><?=\Library\Session::getFlash()?></b>

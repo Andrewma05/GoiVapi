@@ -1,0 +1,39 @@
+<form method="post">
+    <fieldset>
+        <legend>Добавити пророблену роботу:</legend>
+            <label>
+                <select name="vuddialnosti">
+                    <option value="Лист">
+                        Лист
+                    </option>
+                    <option value="Дзвінок">
+                        Дзвінок
+                    </option>
+                    <option value="Надано консультації">
+                        Надано консультації
+                    </option>
+                    <option value="Зустріч з роботодавцем">
+                        Зустріч з роботодавцем
+                    </option>
+                    <option value="Допомога з оформлення документів">
+                        Допомога з оформлення документів
+                    </option>
+                    <option value="Соціальний супровід">
+                        Соціальний супровід
+                    </option>
+                </select>
+            </label>
+            <label>результат
+                <input type="text" name="made" value="<?=$form->made?>">
+            </label>
+
+
+
+
+    </fieldset>
+    <button>Зберегти</button>
+</form>
+
+<b id="flash"><?=\Library\Session::getFlash()?></b>
+
+

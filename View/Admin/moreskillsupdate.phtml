@@ -1,0 +1,12 @@
+<form method="post">
+    <fieldset>
+        <legend>Змінити навик шукача роботи:</legend>
+
+        <label>Додаткові навики:
+            <input type="text" name="skills" value="<?=$oldmoreskills['skills']?>">
+        </label><br>
+    </fieldset>
+    <button>Зберегти</button>
+</form>
+
+<b id="flash"><?=\Library\Session::getFlash()?></b>

@@ -1,0 +1,14 @@
+<?php var_dump($oldmorespecialty)?>
+
+<form method="post">
+    <fieldset>
+        <legend>Змінити додатковий навик, спеціальність шукача:</legend>
+
+        <label>Додаткова спецільність:
+            <input type="text" name="specialty" value="<?=$oldmorespecialty['specialty']?>">
+        </label><br>
+    </fieldset>
+    <button>Зберегти</button>
+</form>
+
+<b id="flash"><?=\Library\Session::getFlash()?></b>
