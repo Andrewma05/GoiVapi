@@ -490,7 +490,7 @@ class AdminController extends Controller
         $vud = $request -> get('id');
         
         $form = new CompanyCreateModel($request);
-
+        $form->vud = $vud;
         $regs = $form->showreg();
 
 
@@ -1215,22 +1215,24 @@ class AdminController extends Controller
         }
         return $this->renderforjavascript('jobseeker', $masuv);
     }
-    
+
     public function onecompanyAction(Request $request)
     {
 
         $search=$request->post('search');
-
         $start = new CompanyCreateModel($request);
         $companes = $start->showsearchcompany($search);
         $masuv = array(
             'companes' => $companes,
         );
-        if (!isset($companes[0])){
-            echo "<h1>$search не знайдено</h1>";}
+        if($search==""){
+            echo "<h2>Введіть назву організації для пошуку</h2>";
+        }
         else{
-            return $this->renderforjavascript('company', $masuv);
+            if (!isset($companes[0])){
+                echo "<h2>$search не знайдено</h2>";}
         };
+        return $this->renderforjavascript('company', $masuv);
     }
 
     public function changeregAction(Request $request)

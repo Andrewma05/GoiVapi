@@ -1,14 +1,29 @@
+<div class="page-header">
+    <h2>Додати організацію <small>
+            <?php
+            switch ($form->vud) {
+                case 1:
+                    echo "Місцеві органи державної влади";
+                    break;
+                case 2:
+                    echo "Центри зайнятості";
+                    break;
+                case 3:
+                    echo "Громадські об'єднання";
+                    break;
+                case 4:
+                    echo "Приватний бізнес";
+                    break;
+                default:
+                    echo "";
+            }
+            ?>
+        </small> </h2>
+</div>
 <div class="col-md-12">
     <h4>
         <form method="post" class="form-inline">
             <fieldset>
-                <legend>Добавити компанію:</legend>
-
-
-
-
-
-
                 <div class="row"><div class="col-md-6 slabel">
                         <label> Назва компанії:</div><div class="col-md-6 svalue">
                         <input type="text" name="company" value="<?=$form->company?>"><br>
@@ -39,7 +54,8 @@
 
 
             </fieldset>
-            <button>Зберегти</button>
+            <button class="btn btn-success btn-lg" type="submit"><i class="fa fa-plus-circle" aria-hidden="true"></i> Додати організацію</button>
+            <a href="/showallcompany/<?=$form->vud?>" class="btn btn-danger btn-lg" role="button"><i class="fa fa-ban" aria-hidden="true"></i> Відмінити</a>
         </form>
     </h4>
 </div>
