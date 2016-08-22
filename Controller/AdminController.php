@@ -1202,18 +1202,20 @@ class AdminController extends Controller
     {
         
         $search=$request->post('search');
-
         $start = new JobSeekerModel($request);
         $seekerses = $start->showjobseeker($search);
         $masuv = array(
             'seekerses' => $seekerses,
         );
+        if ($search==""){
+            echo "<h3>Введіть прізвище для пошуку</h3>";
+        } else{
         if (!isset($seekerses[0])){
-            echo "<h1>$search не знайдено</h1>";}
-        else{
-            return $this->renderforjavascript('jobseeker', $masuv);
-        };
+            echo "<h3>$search не знайдено</h3>";}
+        }
+        return $this->renderforjavascript('jobseeker', $masuv);
     }
+    
     public function onecompanyAction(Request $request)
     {
 
