@@ -1,7 +1,8 @@
+<div class="page-header">
+    <h2>Додати освіту шукача роботи</h2>
+</div>
 <form method="post">
     <fieldset>
-        <legend>Добавити освіту шукача роботи:</legend>
-        
         <label>Навчальний заклад:
             <input type="text" name="school" value="<?=$form->school?>">
         </label><br>
@@ -16,7 +17,8 @@
         </label><br>
 
     </fieldset>
-    <button>Зберегти</button>
+    <button class="btn btn-success btn-lg" type="submit"><i class="fa fa-plus-circle" aria-hidden="true"></i> Додати освіту</button>
+    <a href="/showjobsearch/<?=$form->id_jobseekers?>" class="btn btn-danger btn-lg" role="button"><i class="fa fa-ban" aria-hidden="true"></i> Відмінити</a>
 </form>
 
 <b id="flash"><?=\Library\Session::getFlash()?></b>

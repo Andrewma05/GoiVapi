@@ -45,7 +45,6 @@ return  array(
     
     
     
-    
     'login' => new Route('/login', 'Security', 'login'),
     'logout' => new Route('/logout', 'Security', 'logout'),
     'ajax_test' => new Route('/ajax_test','Admin','ajax'),

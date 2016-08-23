@@ -8,10 +8,11 @@ use Library\DbConnection;
 
 class AllJobSeekeresModel
 {
-    
-    
+
+
     public function showalljobseekers()
     {
+
         $db = DbConnection::getInstance()->getPdo();
 
         if ($_SESSION['id_region'] != 26){
@@ -20,7 +21,7 @@ class AllJobSeekeresModel
         }else{
             $sql = "SELECT * FROM job_seekers";
         };
-        
+
 
 
         // $sth = $db->query('SELECT * FROM book WHERE status = 1 ORDER BY price DESC ');
@@ -30,11 +31,7 @@ class AllJobSeekeresModel
 
 
         $regs = $sth->fetchAll(\PDO::FETCH_ASSOC);
-
-
-        if (!$regs) {
-            throw new NotFoundException('Шукача не знайдено');
-        }
+   
 
         return $regs;
     }

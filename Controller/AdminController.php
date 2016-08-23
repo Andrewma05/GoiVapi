@@ -442,7 +442,7 @@ class AdminController extends Controller
         $search=null;
         $start = new AllJobSeekeresModel($request);
         $seekerses = $start->showalljobseekers();
-        
+
 
         $masuv = array(
             'seekerses' => $seekerses,
@@ -880,6 +880,93 @@ class AdminController extends Controller
         return $this->render('userupdate', $masuv);
     }
 
+
+    public function zvitcreateAction(Request $request)
+    {
+//        $id_moremade = $request -> get('id');
+//
+        $zvit = new ZvitModel($request);
+
+        $reg = $zvit->reg();
+
+        $choturu = $zvit->rezultatchoturu();
+
+
+        $masuv = array(
+
+            'reg' => $reg[0]
+
+
+
+        );
+        return $this->render('zvitcreate', $masuv);
+    }
+
+
+
+    public function showzvitAction(Request $request)
+    {
+//        $id_moremade = $request -> get('id');
+//
+
+        $search=$request->post('search');
+        $year=$request->post('year');
+        if($search==1 && $year==2016){$str='2015-12-31'; $fin='2016-04-01';}
+        elseif ($search==2 && $year==2016){$str='2016-03-31'; $fin='2016-07-01';}
+        elseif ($search==3 && $year==2016){$str='2016-06-30'; $fin='2016-10-01';}
+        elseif ($search==4 && $year==2016){$str='2016-09-30'; $fin='2017-01-01';}
+        elseif ($search==1 && $year==2017){$str='2016-12-31'; $fin='2017-04-01';}
+        elseif ($search==2 && $year==2017){$str='2017-03-31'; $fin='2017-07-01';}
+        elseif ($search==3 && $year==2017){$str='2017-06-30'; $fin='2017-10-01';}
+        elseif ($search==4 && $year==2017){$str='2017-09-30'; $fin='2018-01-01';}
+        elseif ($search==1 && $year==2018){$str='2017-12-31'; $fin='2018-04-01';}
+        elseif ($search==2 && $year==2018){$str='2018-03-31'; $fin='2018-07-01';}
+        elseif ($search==3 && $year==2018){$str='2018-06-30'; $fin='2018-10-01';}
+        elseif ($search==4 && $year==2018){$str='2018-09-30'; $fin='2019-01-01';}
+        elseif ($search==1 && $year==2019){$str='2018-12-31'; $fin='2019-04-01';}
+        elseif ($search==2 && $year==2019){$str='2019-03-31'; $fin='2019-07-01';}
+        elseif ($search==3 && $year==2019){$str='2019-06-30'; $fin='2019-10-01';}
+        elseif ($search==4 && $year==2019){$str='2019-09-30'; $fin='2020-01-01';}
+
+
+//        echo $srt;
+//        echo '<br>';
+//        echo $fin;
+//        echo $year;
+//        die;
+
+        $zvit = new ZvitModel($request);
+        $zvernenman = $zvit->zvernenman($str, $fin);
+        $zvernenwoman = $zvit->zvernenwoman();
+        $zvernen = $zvernenman + $zvernenwoman;
+        $grupuinval = $zvit->grupinval();
+        $vudinval = 1;
+        $rezultat = $zvit->rezultat();
+        $statuswork = $zvit->statuswork();
+        $reg = $zvit->reg();
+
+        $choturu = $zvit->rezultatchoturu();
+
+
+        $masuv = array(
+            'zvernen' => $zvernen,
+            'zvernenman' => $zvernenman,
+            'zvernenwoman' => $zvernenwoman,
+            'grupuinval' => $grupuinval,
+            'rezultat' => $rezultat,
+            'statuswork' => $statuswork,
+            'reg' => $reg[0],
+            'choturu' => $choturu
+
+
+        );
+        return $this->render('showzvit', $masuv);
+    }
+
+
+
+
+
     public function zvitAction(Request $request)
     {
 
@@ -1088,55 +1175,6 @@ class AdminController extends Controller
         );
         return $this->render('napravleno', $args);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public function zvitcreateAction(Request $request)
-    {
-//        $id_moremade = $request -> get('id');
-//
-        $zvit = new ZvitModel($request);
-        $zvernenman = $zvit->zvernenman();
-        $zvernenwoman = $zvit->zvernenwoman();
-        $zvernen = $zvernenman + $zvernenwoman;
-        $grupuinval = $zvit->grupinval();
-        $vudinval = 1;
-        $rezultat = $zvit->rezultat();
-        $statuswork = $zvit->statuswork();
-        $reg = $zvit->reg();
-
-        $choturu = $zvit->rezultatchoturu();
-       
-
-        $masuv = array(
-            'zvernen' => $zvernen,
-            'zvernenman' => $zvernenman,
-            'zvernenwoman' => $zvernenwoman,
-            'grupuinval' => $grupuinval,
-            'rezultat' => $rezultat,
-            'statuswork' => $statuswork,
-            'reg' => $reg[0],
-            'choturu' => $choturu
-
-
-        );
-        return $this->render('zvitcreate', $masuv);
-    }
-
-
     
     public function showcompanyAction(Request $request)
     {

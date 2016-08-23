@@ -137,9 +137,9 @@ class ZvitModel
         $pynkt_tru_piat = $vidmovleno;
         $pynkt_tru_shist = $konsyl;
         $pynkt_piat = $sots;
-        
-        
-        
+
+
+
         $rezultat = array(
             'pynkt_tru_odun' => $pynkt_tru_odun,
             'pynkt_tru_dva' => $pynkt_tru_dva,
@@ -152,7 +152,7 @@ class ZvitModel
         return $rezultat;
     }
 
-    
+
     public function showallcompany($vud)
     {
         $db = DbConnection::getInstance()->getPdo();
@@ -233,7 +233,7 @@ class ZvitModel
         $pynkt_choturu_dva=0;
         $pynkt_choturu_tru=0;
         $pynkt_choturu_choturu=0;
-        
+
 
         $db = DbConnection::getInstance()->getPdo();
 
