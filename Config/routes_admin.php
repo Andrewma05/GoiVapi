@@ -41,6 +41,7 @@ return  array(
     'vidmovleno' => new Route('/vidmovleno/{id}', 'Admin', 'vidmovleno', array('id' => '[0-9]+')),
     'pratsevlashtovano' => new Route('/pratsevlashtovano/{id}', 'Admin', 'pratsevlashtovano', array('id' => '[0-9]+')),
     'napravleno' => new Route('/napravleno/{id}', 'Admin', 'napravleno', array('id' => '[0-9]+')),
+    'showzvit' => new Route('/showzvit', 'Admin', 'showzvit'),
     
     
     

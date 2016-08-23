@@ -490,7 +490,7 @@ class AdminController extends Controller
         $vud = $request -> get('id');
         
         $form = new CompanyCreateModel($request);
-        $form->vud = $vud;
+
         $regs = $form->showreg();
 
 
@@ -1090,26 +1090,62 @@ class AdminController extends Controller
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public function zvitcreateAction(Request $request)
     {
 //        $id_moremade = $request -> get('id');
 //
         $zvit = new ZvitModel($request);
-        $zvernenman = $zvit->zvernenman();
+        
+        $reg = $zvit->reg();
+
+        $choturu = $zvit->rezultatchoturu();
+
+
+        $masuv = array(
+            
+            'reg' => $reg[0]
+            
+
+
+        );
+        return $this->render('zvitcreate', $masuv);
+    }
+
+
+
+    public function showzvitAction(Request $request)
+    {
+//        $id_moremade = $request -> get('id');
+//
+
+        $search=$request->post('search');
+        $year=$request->post('year');
+        if($search==1 && $year==2016){$str='2015-12-31'; $fin='2016-04-01';}
+        elseif ($search==2 && $year==2016){$str='2016-03-31'; $fin='2016-07-01';}
+        elseif ($search==3 && $year==2016){$str='2016-06-30'; $fin='2016-10-01';}
+        elseif ($search==4 && $year==2016){$str='2016-09-30'; $fin='2017-01-01';}
+        elseif ($search==1 && $year==2017){$str='2016-12-31'; $fin='2017-04-01';}
+        elseif ($search==2 && $year==2017){$str='2017-03-31'; $fin='2017-07-01';}
+        elseif ($search==3 && $year==2017){$str='2017-06-30'; $fin='2017-10-01';}
+        elseif ($search==4 && $year==2017){$str='2017-09-30'; $fin='2018-01-01';}
+        elseif ($search==1 && $year==2018){$str='2017-12-31'; $fin='2018-04-01';}
+        elseif ($search==2 && $year==2018){$str='2018-03-31'; $fin='2018-07-01';}
+        elseif ($search==3 && $year==2018){$str='2018-06-30'; $fin='2018-10-01';}
+        elseif ($search==4 && $year==2018){$str='2018-09-30'; $fin='2019-01-01';}
+        elseif ($search==1 && $year==2019){$str='2018-12-31'; $fin='2019-04-01';}
+        elseif ($search==2 && $year==2019){$str='2019-03-31'; $fin='2019-07-01';}
+        elseif ($search==3 && $year==2019){$str='2019-06-30'; $fin='2019-10-01';}
+        elseif ($search==4 && $year==2019){$str='2019-09-30'; $fin='2020-01-01';}
+
+
+//        echo $srt;
+//        echo '<br>';
+//        echo $fin;
+//        echo $year;
+//        die;
+
+        $zvit = new ZvitModel($request);
+        $zvernenman = $zvit->zvernenman($str, $fin);
         $zvernenwoman = $zvit->zvernenwoman();
         $zvernen = $zvernenman + $zvernenwoman;
         $grupuinval = $zvit->grupinval();
@@ -1133,9 +1169,10 @@ class AdminController extends Controller
 
 
         );
-        return $this->render('zvitcreate', $masuv);
+        return $this->render('showzvit', $masuv);
     }
 
+    
     public function showcompanyAction(Request $request)
     {
         $id_company = $request -> get('id');
@@ -1202,37 +1239,33 @@ class AdminController extends Controller
     {
         
         $search=$request->post('search');
+
         $start = new JobSeekerModel($request);
         $seekerses = $start->showjobseeker($search);
         $masuv = array(
             'seekerses' => $seekerses,
         );
-        if ($search==""){
-            echo "<h3>Введіть прізвище для пошуку</h3>";
-        } else{
         if (!isset($seekerses[0])){
-            echo "<h3>$search не знайдено</h3>";}
-        }
-        return $this->renderforjavascript('jobseeker', $masuv);
+            echo "<h1>$search не знайдено</h1>";}
+        else{
+            return $this->renderforjavascript('jobseeker', $masuv);
+        };
     }
-
     public function onecompanyAction(Request $request)
     {
 
         $search=$request->post('search');
+
         $start = new CompanyCreateModel($request);
         $companes = $start->showsearchcompany($search);
         $masuv = array(
             'companes' => $companes,
         );
-        if($search==""){
-            echo "<h2>Введіть назву організації для пошуку</h2>";
-        }
+        if (!isset($companes[0])){
+            echo "<h1>$search не знайдено</h1>";}
         else{
-            if (!isset($companes[0])){
-                echo "<h2>$search не знайдено</h2>";}
+            return $this->renderforjavascript('company', $masuv);
         };
-        return $this->renderforjavascript('company', $masuv);
     }
 
     public function changeregAction(Request $request)

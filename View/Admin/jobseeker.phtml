@@ -1,24 +1,19 @@
 
-    <table  class="table table-responsive table-striped table-hover">
-        <thead>
+    <table class="table">
         <tr>
-            <th><h3>Прізвище</h3></th>
-            <th><h3>Ім'я</h3></th>
-            <th><h3>По-батькові</h3></th>
-            <th><h3>Контакти</h3></th>
-            <th class="th-center"><h3>Дія</h3></th>
+            <td class="active"><h3>Прізвище</h3></td>
+            <td class="active"><h3>Ім'я</h3></td>
+            <td class="active"><h3>По-батькові</h3></td>
+            <td class="active"><h3>Контакти</h3></td>
         </tr>
-        </thead>
-        <tbody>
         <?php if (!$seekerses==null){?>
         <?php foreach ($seekerses as $seekers): ?>
         <tr>
-            <td class="td-left"><?=$seekers['surname']?></td>
-            <td class="td-left"><?=$seekers['jobseekername']?></td>
-            <td class="td-left"><?=$seekers['father']?></td>
-            <td class="td-left"><?=$seekers['contact']?></td>
-            <td><a href="/showjobsearch/<?= $seekers['id'] ?>" class="btn btn-info" role="button"><i class="fa fa-eye" aria-hidden="true"></i> Переглянути</a><br></td>
-        </tr>
+            <td class="active"><?=$seekers['surname']?></td>
+            <td class="active"><?=$seekers['jobseekername']?></td>
+            <td class="active"><?=$seekers['father']?></td>
+            <td class="active"><?=$seekers['contact']?></td>
+            <td><a href="/showjobsearch/<?= $seekers['id'] ?>" class="btn btn-info" role="button"><i class="fa fa-search" aria-hidden="true"></i> Переглянути</a><br></td>
+        <tr>
             <?php endforeach; }?>
-        </tbody>
     </table>

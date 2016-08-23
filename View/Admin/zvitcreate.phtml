@@ -2,44 +2,74 @@
 <h1 class="stitzvit">Узагальнений звіт про результати роботи центру
     працевлаштування громадян <?=$reg['region']?> осередку ГОІ "ВАПІ" за ІІ квартал 2016 року<br><br></h1>
 
-    <div class="stilozvit">
-        1. Кількість осіб, що звернулись до центру: <?=$zvernen?> осіб:
-        <div class="stiloznachzvit">- з них жінок: <?=$zvernenwoman?>;</div>
-        <div class="stiloznachzvit">- з них чоловіків: <?=$zvernenman?>;</div>
-    </div>
-    <div class="stilozvit">
-        2. З них мають інвалідність: *знач* осіб:
-        <?php foreach ($grupuinval as $grupinval): ?>
-        <div class="stiloznachzvit">- з них <?=$grupinval['grup']?>: <?=$grupinval['COUNT(*)']?> осіб;</div>
-            <?php endforeach;?>
-        
-        <div class="stiloznachzvit">- з них кожного виду інвалідності: *знач*;</div>
-    </div>
-    <div class="stilozvit">
-        3. Результат проведенної роботи:
-        <div class="stiloznachzvit">- працевлаштовано <?=$rezultat['pynkt_tru_odun']?> осіб;</div>
-        <div class="stiloznachzvit">- надано допомоги у працевлаштуванні <?=$rezultat['pynkt_tru_dva']?> особам;</div>
-        <div class="stiloznachzvit">- надання допомоги з оформлення документів <?=$rezultat['pynkt_tru_tru']?> особам;</div>
-        <div class="stiloznachzvit">- ведеться робота з пошуку робочого місця для <?=$statuswork?> осіб;</div>
-        <div class="stiloznachzvit">- відмовлено у наданні допомоги <?=$rezultat['pynkt_tru_piat']?> особам;</div>
-        <div class="stiloznachzvit">- надано <?=$rezultat['pynkt_tru_shist']?> консультацій</div>
-    </div>
-    <div class="stilozvit">
-        4. Направлено ... (звернутися) до:
-        <div class="stiloznachzvit">- місцевих органів державної влади <?=$choturu['pynkt_choturu_odun']?> осіб;</div>
-        <div class="stiloznachzvit">- центрів зайнятості <?=$choturu['pynkt_choturu_dva']?> осіб;</div>
-        <div class="stiloznachzvit">- громадських організацій <?=$choturu['pynkt_choturu_tru']?> осіб;</div>
-        <div class="stiloznachzvit">- приватних роботодавців <?=$choturu['pynkt_choturu_choturu']?> осіб;</div>
-    </div>
-    <div class="stilozvit">
-        5. Соціальний супровід проводиться з <?=$rezultat['pynkt_piat']?> клієнтами.
-    </div>
-</div>
-<br><br><br><br><br>
-<div class="row">
-    <a href="" class="thumbnail">
-        <h6>
-            <i class="fa fa-file-pdf-o fa-3x" aria-hidden="true"> Сформувати PDF файл</i>
-        </h6>
-    </a>
-</div>
+    <h4><br>
+        <form>
+            <label> Звіт за
+                <select id="search" name="search">
+                    <option value="1">
+                        І-квартал
+                    </option>
+                    <option value="2">
+                        ІІ-квартал
+                    </option>
+                    <option value="3">
+                        ІІІ-квартал
+                    </option>
+                    <option value="4">
+                        IV-квартал
+                    </option>
+                </select>
+            </label>
+            <label>
+                <select id="year" name="year">
+                    <option value="2016">
+                        2016 року
+                    </option>
+                    <option value="2017">
+                        2017 року
+                    </option>
+                    <option value="2018">
+                        2018 року
+                    </option>
+                    <option value="2019">
+                        2019 року
+                    </option>
+                </select>
+            </label>
+            <a id="botn" class="btn btn-danger btn-md" role="button"><i class="fa fa-ban" aria-hidden="true"></i>ЗМІНИТИ</a>
+        </form>
+        <script>
+            $(document).ready(function() {
+
+                $('#botn').click(function () {
+                    var searchValue = $('#search').val();
+                    var yearValue = $('#year').val();
+//                    alert(searchValue);
+                    alert(searchValue + yearValue);
+                    $.post('/showzvit', {search: searchValue, year: yearValue}).done(function(data) {
+                        $("#tyt").html(data);
+                    });
+                });
+            });
+        </script>
+    </h4>
+    
+<div id="tyt"></div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

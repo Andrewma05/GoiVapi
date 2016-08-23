@@ -96,36 +96,3 @@ border: 1px #CCCCCC solid; /* стили рамки */
 .fa-shadow{
     text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
 }
-
-.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-    background-color: #ccddff;
-}
-
-.th-center{
-    text-align: center;
-}
-
-.td-left{
-    text-align: left;
-}
-.th-left{
-    text-align: left;
-}
-
-.navbar-brand
-{
-    font-size: 25px !important;
-    margin: 0px;
-}
-.navbar{
-    box-shadow: 0px 5px 0px 0px rgba(144,144,245,1);
-    background-color: white;
-    font-size: 15px;
-   /*box-shadow: inset 0px 6px 0px #777;*/
-}
-
-.vcenter {
-    display: inline-block;
-    vertical-align: middle;
-    float: none;
-}

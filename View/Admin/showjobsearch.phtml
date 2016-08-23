@@ -7,47 +7,42 @@
 <!--</div>-->
 
 <div class="row">
+
         <h6>
             <a href="/alljobseekeres" class="thumbnail">
-                    <i class="fa fa-arrow-left fa-2x" aria-hidden="true"> Повернутися до списку шукачів</i>
+                    <i class="fa fa-arrow-left fa-3x" aria-hidden="true"> Повернутися до списку шукачів</i>
             </a>
         </h6>
-</div>
-<div class="page-header">
-    <h1 class="text-uppercase"><strong>Анкета</strong> <small><?= $seekers['surname'] ?> <?= $seekers['jobseekername'] ?> <?= $seekers['father'] ?></small></h1>
-</div>
-<div class="row">
-    <div class="col-md-8 text-left">
-        <h3>
-            <div>
-                ПІБ: <span class="slabelanketa"><?= $seekers['surname'] ?> <?= $seekers['jobseekername'] ?> <?= $seekers['father'] ?></span><br>
 
-                Стать: <span class="slabelanketa">
+</div>
+<h1 class="stitleanketa">АНКЕТА</h1>
+
+<div class="slabel"> Статус:<?= $seekers['statuswork'] ?></div><br>
+<div class="slabel"> Дата створення анкети:<?= $seekers['stvoreno'] ?></div><br>
+<div class="text-right"><a href="/jobseekerupdate/<?= $seekers['id'] ?>" class="btn btn-success" role="button">Редагувати</a><br><br>
+<!--<div class="text-right"><a  class="btn btn-warning" role="button">Працевлаштовано</a>-->
+    <div class="text-right"><a href="/pratsevlashtovano/<?= $seekers['id'] ?>" class="btn btn-warning" role="button">Працевлаштовано</a></div><br>
+    
+<h3>
+    <div class="row svalueanketa">
+        ПІБ: <span class="slabelanketa"><?= $seekers['surname'] ?> <?= $seekers['jobseekername'] ?> <?= $seekers['father'] ?></span><br>
+
+        Стать: <span class="slabelanketa">
             <?php if ($seekers['stat']=='male'){echo 'чоловіча';}
             elseif ($seekers['stat']=='female'){echo 'жіноча';}
             else{echo 'Стать не задана';}?>
         </span><br>
-                Дата народження: <span class="slabelanketa"><?= $seekers['birthdate'] ?></span><br>
-                Паспорт: <span class="slabelanketa"><?= $seekers['pasport'] ?></span><br>
-                Адреса: <span class="slabelanketa"><?= $seekers['adress'] ?></span><br>
-                Номер телефону: <span class="slabelanketa"><?= $seekers['contact'] ?></span><br>
-                E-mail: <span class="slabelanketa"><?= $seekers['email'] ?></span><br>
-                Група інвалідності: <span class="slabelanketa"> <?=$seekers['grup']?></span><br>
-               Звільнення з останнього місця роботи: <span class="slabelanketa"><?= $seekers['freedate'] ?></span><br>
-            </div>
-        </h3>
-    </div>
-    <div class="col-md-4  text-right">
-        <h4> Статус: <span class="label label-primary"><?= $seekers['statuswork'] ?></span></h4>
-        <h4> Дата створення анкети: <?= $seekers['stvoreno'] ?></h4>
-<!--        <div class="row">-->
-            <div class=" col-md-offset-5 col-md-7"><a href="/jobseekerupdate/<?= $seekers['id'] ?>" class="btn btn-success btn-block" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Редагувати</a><br></div>
-            <!--<div class="text-right"><a  class="btn btn-warning" role="button">Працевлаштовано</a>-->
-            <div class=" col-md-offset-5 col-md-7"><a href="/pratsevlashtovano/<?= $seekers['id'] ?>" class="btn btn-warning btn-block" role="button"><i class="fa fa-check-square-o" aria-hidden="true"></i> Працевлаштовано</a></div>
-<!--        </div>-->
+        Дата народження: <span class="slabelanketa"><?= $seekers['birthdate'] ?></span><br>
+        Паспорт: <span class="slabelanketa"><?= $seekers['pasport'] ?></span><br>
+        Адреса: <span class="slabelanketa"><?= $seekers['adress'] ?></span><br>
+        Номер телефону: <span class="slabelanketa"><?= $seekers['contact'] ?></span><br>
+        E-mail: <span class="slabelanketa"><?= $seekers['email'] ?></span><br>
+        Група інвалідності: <span class="slabelanketa"> <?=$seekers['grup']?></span><br>
+        Дата звільнення з останнього місця роботи: <span class="slabelanketa"><?= $seekers['freedate'] ?></span><br>
 
     </div>
-</div>
+</h3>
+
 <!---->
 
 
@@ -254,7 +249,7 @@
         <center>
         <h6>
             <a href="/alljobseekeres" class="thumbnail">
-                <i class="fa fa-arrow-left fa-2x" aria-hidden="true"> Повернутися до списку шукачів</i>
+                <i class="fa fa-arrow-left fa-3x" aria-hidden="true"> Повернутися до списку шукачів</i>
             </a>
         </h6>
         </center>

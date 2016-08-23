@@ -1,18 +1,7 @@
 <h4>
-        <div class="row">
-            <div class="col-md-4">
-                <input id="search" type="text"  class="form-control" name="search" placeholder="Введіть прізвіще для пошуку">
-            </div>
-            <div class="col-md-4">
-                <a id="botn" class="btn btn-success btn-md" role="button"><i class="fa fa-search" aria-hidden="true"></i> ЗНАЙТИ</a>
-                <a class="btn btn-danger btn-md  text-uppercase" href="/alljobseekeres" role="button"><i class="fa fa-times-circle" aria-hidden="true"></i> Показати всі анкети</a>
-            </div>
-            <div class="col-md-4">
-                <a class="btn btn-primary btn-md  text-uppercase" href="/jobseekercreate" role="button"><i class="fa fa-user-plus" aria-hidden="true"></i> Додати нову анкету</a>
-            </div>
-        </div>
-
-
+    <input id="search" type="text"  name="search">
+    <a id="botn" class="btn btn-danger btn-md" role="button"><i class="fa fa-ban" aria-hidden="true"></i>ЗНАЙТИ</a>
+    
     <script>
         $(document).ready(function() {
 
@@ -27,36 +16,38 @@
 </h4>
 
 <div class="row">
-<!--<div class="table-responsive" id="tyt">-->
-<!---->
-<!--</div>-->
+<div class="table-responsive" id="tyt">
 
-<div id="tyt">
-    <table class="table table-responsive table-striped table-hover">
-        <thead>
+</div>
+
+<div class="table-responsive">
+    <table class="table">
         <tr>
-            <th><h3>Прізвище</h3></th>
-            <th><h3>Ім'я</h3></th>
-            <th><h3>По-батькові</h3></th>
-            <th><h3>Контакти</h3></th>
-            <th class="th-center"><h3>Дія</h3></th>
+
+            <td class="active"><h3>Прізвище</h3></td>
+            <td class="active"><h3>Ім'я</h3></td>
+            <td class="active"><h3>По-батькові</h3></td>
+            <td class="active"><h3>Контакти</h3></td>
+      
+
         </tr>
-        </thead>
-        <tbody>
+
+
 <?php if (!$seekerses==null){?>
-    <?php foreach ($seekerses as $seekers){ ?>
+    <?php foreach ($seekerses as $seekers): ?>
 
         <tr>
-            <td class="td-left"><?=$seekers['surname']?></td>
-            <td class="td-left"><?=$seekers['jobseekername']?></td>
-            <td class="td-left"><?=$seekers['father']?></td>
-            <td class="td-left"><?=$seekers['contact']?></td>
+            
+            <td class="active"><?=$seekers['surname']?></td>
+            <td class="active"><?=$seekers['jobseekername']?></td>
+            <td class="active"><?=$seekers['father']?></td>
+            <td class="active"><?=$seekers['contact']?></td>
 
-            <td><a href="/showjobsearch/<?= $seekers['id'] ?>" class="btn btn-info" role="button"><i class="fa fa-eye" aria-hidden="true"></i> Переглянути</a></td>
-        </tr>
-    <?php } }?>
+            <td><a href="/showjobsearch/<?= $seekers['id'] ?>" class="btn btn-info" role="button"><i class="fa fa-search" aria-hidden="true"></i> Переглянути</a><br></td>
+        <tr>
+    <?php endforeach; }?>
 
-        </tbody>
+        
     </table>
 </div>
 </div>

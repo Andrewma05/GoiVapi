@@ -1,24 +1,28 @@
 
-<table class="table table-responsive table-striped table-hover">
-    <thead>
-    <tr>
-        <th><h3>Компанія</h3></th>
-        <th><h3>Контакти</h3></th>
-        <th  class="th-center"><h3>Дія</h3></th>
-        <!--            <td class="active"><h3>E-mail</h3></td>-->
-    </tr>
-    </thead>
-    <tbody>
-    <?php if (!$companes==null){?>
-        <?php foreach ($companes as $company): ?>
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <td class="active"><h3>ID</h3></td>
+                        <td class="active"><h3>Компанія</h3></td>
+                        <td class="active"><h3>Контакти</h3></td>
 
-            <tr>
-                <td class="td-left"><?=$company['company']?></td>
-                <td class="td-left"><?=$company['contact']?></td>
-                <td><a href="/showcompany/<?= $company['id'] ?>" class="btn btn-info" role="button"><i class="fa fa-eye" aria-hidden="true"></i> Переглянути</a><br></td>
+                        <!--            <td class="active"><h3>E-mail</h3></td>-->
+                    </tr>
 
-                <!--            <td><a href="/showuser/--><?//= $company['id'] ?><!--" class="btn btn-info" role="button"><i class="fa fa-search" aria-hidden="true"></i> Переглянути</a><br></td>-->
-            </tr>
-        <?php endforeach; }?>
-    </tbody>
-</table>
+
+
+                    <?php foreach ($companes as $company): ?>
+
+                    <tr>
+                        <td class="active"><?=$company['id']?></td>
+                        <td class="active"><?=$company['company']?></td>
+                        <td class="active"><?=$company['contact']?></td>
+                        <td><a href="/showcompany/<?= $company['id'] ?>" class="btn btn-info" role="button"><i class="fa fa-search" aria-hidden="true"></i> Переглянути</a><br></td>
+
+                        <!--            <td><a href="/showuser/--><?//= $company['id'] ?><!--" class="btn btn-info" role="button"><i class="fa fa-search" aria-hidden="true"></i> Переглянути</a><br></td>-->
+                    <tr>
+                        <?php endforeach;?>
+
+
+                </table>
+            </div>
