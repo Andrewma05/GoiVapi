@@ -1,38 +1,50 @@
-<form method="post">
-    <fieldset>
-        <legend>Добавити пророблену роботу:</legend>
-            <label>
-                <select name="vuddialnosti">
-                    <option value="Лист">
-                        Лист
-                    </option>
-                    <option value="Дзвінок">
-                        Дзвінок
-                    </option>
-                    <option value="Надано консультації">
-                        Надано консультації
-                    </option>
-                    <option value="Зустріч з роботодавцем">
-                        Зустріч з роботодавцем
-                    </option>
-                    <option value="Допомога з оформлення документів">
-                        Допомога з оформлення документів
-                    </option>
-                    <option value="Соціальний супровід">
-                        Соціальний супровід
-                    </option>
-                </select>
-            </label>
-            <label>результат
-                <input type="text" name="made" value="<?=$form->made?>">
-            </label>
+<div class="page-header">
+    <h2>Додати пророблену роботу</h2>
+</div>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <form method="post" class="form-horizontal">
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Вид роботи:</label>
+                    <div class="col-sm-8">
+                        <select name="vuddialnosti" tabindex="1" autofocus>
+                            <option value="Лист">
+                                Лист
+                            </option>
+                            <option value="Дзвінок">
+                                Дзвінок
+                            </option>
+                            <option value="Надано консультації">
+                                Надано консультації
+                            </option>
+                            <option value="Зустріч з роботодавцем">
+                                Зустріч з роботодавцем
+                            </option>
+                            <option value="Допомога з оформлення документів">
+                                Допомога з оформлення документів
+                            </option>
+                            <option value="Соціальний супровід">
+                                Соціальний супровід
+                            </option>
+                        </select>
+                    </div>
+                </div>
 
-
-
-
-    </fieldset>
-    <button>Зберегти</button>
-</form>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Результат:</label>
+                    <div class="col-sm-8">
+                        <input type="text"  name="made" class="form-control" tabindex="2" placeholder="" value="<?=$form->made?>">
+                    </div>
+                </div>
+            </fieldset>
+            <p>
+                <button class="btn btn-success btn-lg" type="submit"><i class="fa fa-plus-circle" aria-hidden="true"></i> Додати роботу</button>
+                <a href="/showjobsearch/<?=$form->id_jobseekers?>#serc" class="btn btn-danger btn-lg" role="button"><i class="fa fa-ban" aria-hidden="true"></i> Відмінити</a>
+            </p>
+        </form>
+    </div>
+</div>
 
 <b id="flash"><?=\Library\Session::getFlash()?></b>
 

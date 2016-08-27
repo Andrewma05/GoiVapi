@@ -1,12 +1,24 @@
-<form method="post">
-    <fieldset>
-        <legend>Додаткові навики спеціальності шукача:</legend>
+<div class="page-header">
+    <h2>Додати додаткову спеціальність</h2>
+</div>
 
-        <label>Додаткова спецільність:
-            <input type="text" name="specialty" value="<?=$form->specialty?>">
-        </label><br>
-    </fieldset>
-    <button>Зберегти</button>
-</form>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <form method="post" class="form-horizontal">
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-sm-5 control-label">Додаткова спецільність:</label>
+                    <div class="col-sm-7">
+                        <input type="text" name="specialty" class="form-control" tabindex="1" autofocus placeholder="Назва спеціальності" value="<?=$form->specialty?>">
+                    </div>
+                </div>
+            </fieldset>
+            <p>
+                <button class="btn btn-success btn-lg" type="submit"><i class="fa fa-plus-circle" aria-hidden="true"></i> Додати спеціальність</button>
+                <a href="/showjobsearch/<?=$form->id_jobseekers?>#addspec" class="btn btn-danger btn-lg" role="button"><i class="fa fa-ban" aria-hidden="true"></i> Відмінити</a>
+            </p>
+        </form>
+    </div>
+</div>
 
 <b id="flash"><?=\Library\Session::getFlash()?></b>

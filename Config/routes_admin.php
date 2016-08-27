@@ -34,7 +34,7 @@ return  array(
     'zvitcreate' => new Route('/zvitcreate', 'Admin', 'zvitcreate'),
     'showcompany' => new Route('/showcompany/{id}', 'Admin', 'showcompany', array('id' => '[0-9]+')),
     'updatecompany' => new Route('/updatecompany/{id}', 'Admin', 'updatecompany', array('id' => '[0-9]+')),
-    'delete' => new Route('/delete/{id}', 'Admin', 'delete', array('id' => '[0-9]+')),
+
     'onejobseeker' => new Route('/onejobseeker', 'Admin', 'onejobseeker'),
     'onecompany' => new Route('/onecompany', 'Admin', 'onecompany'),
     'changereg' => new Route('/changereg', 'Admin', 'changereg'),
@@ -42,7 +42,18 @@ return  array(
     'pratsevlashtovano' => new Route('/pratsevlashtovano/{id}', 'Admin', 'pratsevlashtovano', array('id' => '[0-9]+')),
     'napravleno' => new Route('/napravleno/{id}', 'Admin', 'napravleno', array('id' => '[0-9]+')),
     'showzvit' => new Route('/showzvit', 'Admin', 'showzvit'),
-    
+
+
+    'deleteexperience' => new Route('/deleteexperience/{id}', 'Admin', 'deleteexperience', array('id' => '[0-9]+')),
+    'deleteeducation' => new Route('/deleteeducation/{id}', 'Admin', 'deleteeducation', array('id' => '[0-9]+')),
+    'deletepastresort' => new Route('/deletepastresort/{id}', 'Admin', 'deletepastresort', array('id' => '[0-9]+')),
+    'deletemorespecialty' => new Route('/deletemorespecialty/{id}', 'Admin', 'deletemorespecialty', array('id' => '[0-9]+')),
+    'deletemoreskills' => new Route('/deletemoreskills/{id}', 'Admin', 'deletemoreskills', array('id' => '[0-9]+')),
+    'deletesearch' => new Route('/deletesearch/{id}', 'Admin', 'deletesearch', array('id' => '[0-9]+')),
+    'deletemoremade' => new Route('/deletemoremade/{id}', 'Admin', 'deletemoremade', array('id' => '[0-9]+')),
+
+
+
     
     
     'login' => new Route('/login', 'Security', 'login'),

@@ -129,3 +129,11 @@ border: 1px #CCCCCC solid; /* стили рамки */
     vertical-align: middle;
     float: none;
 }
+
+.w100{
+    width: 100%;
+}
+
+.w100:hover a{
+    color: #fff;
+}

@@ -1,12 +1,23 @@
-<form method="post">
-    <fieldset>
-        <legend>Змінити навик шукача роботи:</legend>
-
-        <label>Додаткові навики:
-            <input type="text" name="skills" value="<?=$oldmoreskills['skills']?>">
-        </label><br>
-    </fieldset>
-    <button>Зберегти</button>
-</form>
+<div class="page-header">
+    <h2>Змінити додатковий навик шукача роботи</h2>
+</div>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <form method="post" class="form-horizontal">
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Додатковий навик:</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="skills" class="form-control" tabindex="1" autofocus placeholder="" value="<?=$oldmoreskills['skills']?>">
+                    </div>
+                </div>
+            </fieldset>
+            <p>
+                <button class="btn btn-success btn-lg" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Зберегти навик</button>
+                <a href="/showjobsearch/<?=$oldmoreskills['id_jobseekers']?>#addnav" class="btn btn-danger btn-lg" role="button"><i class="fa fa-ban" aria-hidden="true"></i> Відмінити</a>
+            </p>
+        </form>
+    </div>
+</div>
 
 <b id="flash"><?=\Library\Session::getFlash()?></b>

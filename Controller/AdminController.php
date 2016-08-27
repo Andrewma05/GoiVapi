@@ -55,7 +55,6 @@ class AdminController extends Controller
         );
         return $this->render('firstpage', $args);
     }
-    
 
     public function thirdpageAction(Request $request)
     {
@@ -73,8 +72,6 @@ class AdminController extends Controller
 //
         return $this->render('thirdpage');
     }
-    
-
 
     public function usercreateAction(Request $request)
     {
@@ -106,7 +103,7 @@ class AdminController extends Controller
                 Session::setFlash('Success');
 
                 // todo: function redirect($to)
-                Router::redirect('/firstpage');
+                Router::redirect('/alluseres');
             }
 
             Session::setFlash('Error');
@@ -174,13 +171,12 @@ class AdminController extends Controller
         return $this->render('jobseekercreate', $args);
     }
 
-    
-
     public function educationcreateAction(Request $request)
     {
         $id_jobseekers = $request -> get('id');
 
         $form = new EducationCreateModel($request);
+        $form->id_jobseekers = $id_jobseekers;
 
         $regs = $form->showreg();
 
@@ -200,7 +196,7 @@ class AdminController extends Controller
                 Session::setFlash('Success');
 
                 // todo: function redirect($to)
-                Router::redirect("/showjobsearch/$id_jobseekers");
+                Router::redirect("/showjobsearch/$id_jobseekers#edu");
             }
 
             Session::setFlash('Error');
@@ -219,7 +215,7 @@ class AdminController extends Controller
         $id_jobseekers = $request -> get('id');
 
         $form = new ExperienceCreateModel($request);
-
+        $form->id_jobseekers = $id_jobseekers;
         $regs = $form->showreg();
 
 
@@ -237,7 +233,7 @@ class AdminController extends Controller
                 Session::setFlash('Success');
 
                 // todo: function redirect($to)
-                Router::redirect("/showjobsearch/$id_jobseekers");
+                Router::redirect("/showjobsearch/$id_jobseekers#laswork");
             }
 
             Session::setFlash('Error');
@@ -251,17 +247,15 @@ class AdminController extends Controller
         return $this->render('experiencecreate', $args);
     }
 
-
-
     public function pastresortcreateAction(Request $request)
     {
         $id_jobseekers = $request -> get('id');
 
         $form = new PastresortCreateModel($request);
 
+        $form->id_jobseekers = $id_jobseekers;
+
         $regs = $form->showreg();
-
-
 
         if ($request->isPost()) {
             if ($form->isValid()) {
@@ -277,7 +271,7 @@ class AdminController extends Controller
                 Session::setFlash('Success');
 
                 // todo: function redirect($to)
-                Router::redirect("/showjobsearch/$id_jobseekers");
+                Router::redirect("/showjobsearch/$id_jobseekers#prevapl");
             }
 
             Session::setFlash('Error');
@@ -296,7 +290,7 @@ class AdminController extends Controller
         $id_jobseekers = $request -> get('id');
 
         $form = new MoreSpecialtyCreateModel($request);
-
+        $form->id_jobseekers = $id_jobseekers;
         $regs = $form->showreg();
 
 
@@ -311,7 +305,7 @@ class AdminController extends Controller
                 Session::setFlash('Success');
 
                 // todo: function redirect($to)
-                Router::redirect("/showjobsearch/$id_jobseekers");
+                Router::redirect("/showjobsearch/$id_jobseekers#addspec");
             }
 
             Session::setFlash('Error');
@@ -330,7 +324,7 @@ class AdminController extends Controller
         $id_jobseekers = $request -> get('id');
 
         $form = new MoreSkillsCreateModel($request);
-
+        $form->id_jobseekers = $id_jobseekers;
         $regs = $form->showreg();
 
 
@@ -344,7 +338,7 @@ class AdminController extends Controller
                 Session::setFlash('Success');
 
                 // todo: function redirect($to)
-                Router::redirect("/showjobsearch/$id_jobseekers");
+                Router::redirect("/showjobsearch/$id_jobseekers#addnav");
             }
 
             Session::setFlash('Error');
@@ -357,15 +351,13 @@ class AdminController extends Controller
         );
         return $this->render('moreskillscreate', $args);
     }
-    
-    
-    
+
     public function jobsearchcreateAction(Request $request)
     {
         $id_jobseekers = $request -> get('id');
 
         $form = new JobSearchCreateModel($request);
-
+        $form->id_jobseekers = $id_jobseekers;
         $regs = $form->showreg();
 
 
@@ -377,7 +369,7 @@ class AdminController extends Controller
                 $form->save(array(
                     'id_jobseekers' => $id_jobseekers,
                     'specialty' => $form->specialty,
-                    'id_region' => $form->id_region,
+                    'id_region' => $_SESSION['id_region'],
                     'job_grapf' => $form->job_grapf,
                     'sort_job' => $form->sort_job,
                     'salary' => $form->salary
@@ -386,7 +378,7 @@ class AdminController extends Controller
                 Session::setFlash('Success');
 
                 // todo: function redirect($to)
-                Router::redirect("/showjobsearch/$id_jobseekers");
+                Router::redirect("/showjobsearch/$id_jobseekers#serc");
             }
 
             Session::setFlash('Error');
@@ -528,8 +520,6 @@ class AdminController extends Controller
         );
         return $this->render('companycreate', $args);
     }
-   
-    
 
     public function showallcompanyAction(Request $request)
     {
@@ -608,7 +598,8 @@ class AdminController extends Controller
         $form = new EducationCreateModel($request);
 
         $oldeducation = $form->showeducation($id_education);
-        
+
+
         $number = $oldeducation[0]['id_jobseekers'];
 
         if ($request->isPost()) {
@@ -678,8 +669,6 @@ class AdminController extends Controller
         );
         return $this->render('experienceupdate', $masuv);
     }
-
-
 
     public function pastresortupdateAction(Request $request)
     {
@@ -752,7 +741,7 @@ class AdminController extends Controller
         );
         return $this->render('morespecialtyupdate', $masuv);
     }
-//
+
     public function moreskillsupdateAction(Request $request)
     {
         $id_moreskills = $request -> get('id');
@@ -783,8 +772,6 @@ class AdminController extends Controller
         );
         return $this->render('moreskillsupdate', $masuv);
     }
-
-
 
     public function jobsearchupdateAction(Request $request)
     {
@@ -828,7 +815,6 @@ class AdminController extends Controller
         );
         return $this->render('jobsearchupdate', $masuv);
     }
-
 
     public function userupdateAction(Request $request)
     {
@@ -880,112 +866,12 @@ class AdminController extends Controller
         return $this->render('userupdate', $masuv);
     }
 
-
-    public function zvitcreateAction(Request $request)
-    {
-//        $id_moremade = $request -> get('id');
-//
-        $zvit = new ZvitModel($request);
-
-        $reg = $zvit->reg();
-
-        $choturu = $zvit->rezultatchoturu();
-
-
-        $masuv = array(
-
-            'reg' => $reg[0]
-
-
-
-        );
-        return $this->render('zvitcreate', $masuv);
-    }
-
-
-
-    public function showzvitAction(Request $request)
-    {
-//        $id_moremade = $request -> get('id');
-//
-
-        $search=$request->post('search');
-        $year=$request->post('year');
-        if($search==1 && $year==2016){$str='2015-12-31'; $fin='2016-04-01';}
-        elseif ($search==2 && $year==2016){$str='2016-03-31'; $fin='2016-07-01';}
-        elseif ($search==3 && $year==2016){$str='2016-06-30'; $fin='2016-10-01';}
-        elseif ($search==4 && $year==2016){$str='2016-09-30'; $fin='2017-01-01';}
-        elseif ($search==1 && $year==2017){$str='2016-12-31'; $fin='2017-04-01';}
-        elseif ($search==2 && $year==2017){$str='2017-03-31'; $fin='2017-07-01';}
-        elseif ($search==3 && $year==2017){$str='2017-06-30'; $fin='2017-10-01';}
-        elseif ($search==4 && $year==2017){$str='2017-09-30'; $fin='2018-01-01';}
-        elseif ($search==1 && $year==2018){$str='2017-12-31'; $fin='2018-04-01';}
-        elseif ($search==2 && $year==2018){$str='2018-03-31'; $fin='2018-07-01';}
-        elseif ($search==3 && $year==2018){$str='2018-06-30'; $fin='2018-10-01';}
-        elseif ($search==4 && $year==2018){$str='2018-09-30'; $fin='2019-01-01';}
-        elseif ($search==1 && $year==2019){$str='2018-12-31'; $fin='2019-04-01';}
-        elseif ($search==2 && $year==2019){$str='2019-03-31'; $fin='2019-07-01';}
-        elseif ($search==3 && $year==2019){$str='2019-06-30'; $fin='2019-10-01';}
-        elseif ($search==4 && $year==2019){$str='2019-09-30'; $fin='2020-01-01';}
-
-
-//        echo $srt;
-//        echo '<br>';
-//        echo $fin;
-//        echo $year;
-//        die;
-
-        $zvit = new ZvitModel($request);
-        $zvernenman = $zvit->zvernenman($str, $fin);
-        $zvernenwoman = $zvit->zvernenwoman();
-        $zvernen = $zvernenman + $zvernenwoman;
-        $grupuinval = $zvit->grupinval();
-        $vudinval = 1;
-        $rezultat = $zvit->rezultat();
-        $statuswork = $zvit->statuswork();
-        $reg = $zvit->reg();
-
-        $choturu = $zvit->rezultatchoturu();
-
-
-        $masuv = array(
-            'zvernen' => $zvernen,
-            'zvernenman' => $zvernenman,
-            'zvernenwoman' => $zvernenwoman,
-            'grupuinval' => $grupuinval,
-            'rezultat' => $rezultat,
-            'statuswork' => $statuswork,
-            'reg' => $reg[0],
-            'choturu' => $choturu
-
-
-        );
-        return $this->render('showzvit', $masuv);
-    }
-
-
-
-
-
-    public function zvitAction(Request $request)
-    {
-
-
-        $masuv = array(
-//            'form' => $form,
-//            'regs' => $regs,
-//            'olduser' => $olduser[0]
-
-        );
-        return $this->render('zvit', $masuv);
-    }
-
     public function moremadecreateAction(Request $request)
     {
         $id_jobseekers = $request -> get('id');
 
         $form = new MoreMadeCreateModel($request);
-
+        $form->id_jobseekers = $id_jobseekers;
         $regs = $form->showreg();
 
 
@@ -1136,7 +1022,6 @@ class AdminController extends Controller
         return $this->render('pratsevlashtovano', $args);
     }
 
-
     public function napravlenoAction(Request $request)
     {
         $id_jobseekers = $request -> get('id');
@@ -1228,15 +1113,73 @@ class AdminController extends Controller
         return $this->render('updatecompany', $masuv);
     }
 
-    public function deleteAction(Request $request)
+    public function deleteexperienceAction(Request $request)
     {
         $id = $request -> get('id');
-        var_dump($id);
         $db = DbConnection::getInstance()->getPdo();
         $sql = "DELETE FROM experience WHERE id = '$id'";
         $s = $db->prepare($sql);
         $s->execute();
     }
+
+    public function deleteeducationAction(Request $request)
+    {
+        $id = $request -> get('id');
+        $db = DbConnection::getInstance()->getPdo();
+        $sql = "DELETE FROM education WHERE id = '$id'";
+        $s = $db->prepare($sql);
+        $s->execute();
+    }
+
+    public function deletepastresortAction(Request $request)
+    {
+        $id = $request -> get('id');
+        $db = DbConnection::getInstance()->getPdo();
+        $sql = "DELETE FROM past_resort WHERE id = '$id'";
+        $s = $db->prepare($sql);
+        $s->execute();
+    }
+
+    public function deletemorespecialtyAction(Request $request)
+    {
+        $id = $request -> get('id');
+        $db = DbConnection::getInstance()->getPdo();
+        $sql = "DELETE FROM more_specialty WHERE id = '$id'";
+        $s = $db->prepare($sql);
+        $s->execute();
+    }
+
+    public function deletemoreskillsAction(Request $request)
+    {
+        $id = $request -> get('id');
+        $db = DbConnection::getInstance()->getPdo();
+        $sql = "DELETE FROM more_skills WHERE id = '$id'";
+        $s = $db->prepare($sql);
+        $s->execute();
+    }
+
+    public function deletesearchAction(Request $request)
+    {
+        $id = $request -> get('id');
+        $db = DbConnection::getInstance()->getPdo();
+        $sql = "DELETE FROM job_search WHERE id = '$id'";
+        $s = $db->prepare($sql);
+        $s->execute();
+    }
+
+    public function deletemoremadeAction(Request $request)
+    {
+        $id = $request -> get('id');
+        $db = DbConnection::getInstance()->getPdo();
+        $sql = "DELETE FROM more_made WHERE id = '$id'";
+        $s = $db->prepare($sql);
+        $s->execute();
+    }
+
+
+
+
+
 
     public function onejobseekerAction(Request $request)
     {
@@ -1292,6 +1235,100 @@ class AdminController extends Controller
 //        return $masuv;
         return $this->renderforjavascript('reg', $masuv);
 
+    }
+
+    public function zvitcreateAction(Request $request)
+    {
+//        $id_moremade = $request -> get('id');
+//
+        $zvit = new ZvitModel($request);
+
+        $reg = $zvit->reg();
+
+//        $choturu = $zvit->rezultatchoturu();
+
+
+        $masuv = array(
+
+            'reg' => $reg[0]
+
+
+
+        );
+        return $this->render('zvitcreate', $masuv);
+    }
+
+    public function showzvitAction(Request $request)
+    {
+//        $id_moremade = $request -> get('id');
+//
+
+        $search=$request->post('search');
+        $year=$request->post('year');
+        if($search==1 && $year==2016){$str='2016-01-01'; $fin='2016-03-31';}
+        elseif ($search==2 && $year==2016){$str='2016-04-01'; $fin='2016-06-30';}
+        elseif ($search==3 && $year==2016){$str='2016-07-01'; $fin='2016-09-30';}
+        elseif ($search==4 && $year==2016){$str='2016-10-01'; $fin='2016-12-31';}
+        elseif ($search==1 && $year==2017){$str='2017-01-01'; $fin='2017-03-31';}
+        elseif ($search==2 && $year==2017){$str='2017-04-01'; $fin='2017-06-30';}
+        elseif ($search==3 && $year==2017){$str='2017-07-01'; $fin='2017-09-30';}
+        elseif ($search==4 && $year==2017){$str='2017-10-01'; $fin='2017-12-31';}
+        elseif ($search==1 && $year==2018){$str='2018-01-01'; $fin='2018-03-31';}
+        elseif ($search==2 && $year==2018){$str='2018-04-01'; $fin='2018-06-30';}
+        elseif ($search==3 && $year==2018){$str='2018-07-01'; $fin='2018-09-30';}
+        elseif ($search==4 && $year==2018){$str='2018-10-01'; $fin='2018-12-31';}
+        elseif ($search==1 && $year==2019){$str='2019-01-01'; $fin='2019-03-31';}
+        elseif ($search==2 && $year==2019){$str='2019-04-01'; $fin='2019-06-30';}
+        elseif ($search==3 && $year==2019){$str='2019-07-01'; $fin='2019-09-30';}
+        elseif ($search==4 && $year==2019){$str='2019-10-01'; $fin='2019-12-31';}
+
+
+
+        $zvit = new ZvitModel($request);
+        $zvernenman = $zvit->zvernenman($str, $fin);
+        $zvernenwoman = $zvit->zvernenwoman($str, $fin);
+        $zvernen = $zvernenman + $zvernenwoman;
+        $grupuinval = $zvit->grupinval($str, $fin);
+        $rezultat = $zvit->rezultat($str, $fin);
+
+
+        $choturu = $zvit->rezultatchoturu($str, $fin);
+
+
+        $vudinval = 1;
+
+        $statuswork = $zvit->statuswork();
+        $reg = $zvit->reg();
+
+
+
+
+        $masuv = array(
+            'zvernen' => $zvernen,
+            'zvernenman' => $zvernenman,
+            'zvernenwoman' => $zvernenwoman,
+            'grupuinval' => $grupuinval,
+            'rezultat' => $rezultat,
+            'statuswork' => $statuswork,
+            'reg' => $reg[0],
+            'choturu' => $choturu
+
+
+        );
+        return $this->render('showzvit', $masuv);
+    }
+
+    public function zvitAction(Request $request)
+    {
+
+
+        $masuv = array(
+//            'form' => $form,
+//            'regs' => $regs,
+//            'olduser' => $olduser[0]
+
+        );
+        return $this->render('zvit', $masuv);
     }
 
 }

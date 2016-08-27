@@ -1,22 +1,44 @@
-<form method="post">
-    <fieldset>
-        <legend>Добавити стаж шукача роботи:</legend>
+<div class="page-header">
+    <h2>Змінити місце роботи шукача</h2>
+</div>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <form method="post"  class="form-horizontal">
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Назва установи:</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="organization" class="form-control" tabindex="1" autofocus placeholder="Назва організації" value="<?=$oldexperience['organization']?>">
+                    </div>
+                </div>
 
-        <label>Назва установи:
-            <input type="text" name="organization" value="<?=$oldexperience['organization']?>">
-        </label><br>
-        <label>Загальний стаж(в місяцях):
-            <input type="text" name="experience" value="<?=$oldexperience['experience']?>">
-        </label><br>
-        <label> спеціальність(професія):
-            <input type="text" name="specialty" value="<?=$oldexperience['specialty']?>">
-        </label><br>
-        <label> Посада:
-            <input type="text" name="posada" value="<?=$oldexperience['posada']?>">
-        </label><br>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Загальний стаж:</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="experience" class="form-control" tabindex="2" placeholder="Кількість місяців" value="<?=$oldexperience['experience']?>">
+                    </div>
+                </div>
 
-    </fieldset>
-    <button>Зберегти</button>
-</form>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Спеціальність:</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="specialty" class="form-control" tabindex="3" placeholder="Назва спеціальності або професії" value="<?=$oldexperience['specialty']?>">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Посада:</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="posada" class="form-control" tabindex="4" placeholder="Назва посади" value="<?=$oldexperience['posada']?>">
+                    </div>
+                </div>
+            </fieldset>
+            <p>
+                <button class="btn btn-success btn-lg" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Зберегти місце роботи</button>
+                <a href="/showjobsearch/<?=$oldexperience['id_jobseekers']?>#laswork" class="btn btn-danger btn-lg" role="button"><i class="fa fa-ban" aria-hidden="true"></i> Відмінити</a>
+            </p>
+        </form>
+    </div>
+</div>
 
 <b id="flash"><?=\Library\Session::getFlash()?></b>

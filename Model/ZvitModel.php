@@ -7,27 +7,21 @@ use Library\DbConnection;
 
 class ZvitModel
 {
-    public function zvernenman()
+    public function zvernenman($str, $fin)
     {
+
         $db = DbConnection::getInstance()->getPdo();
 
-        $sql = "SELECT COUNT(*) FROM job_seekers WHERE stat = 'male'";
+        $sql = "SELECT COUNT(*) FROM job_seekers WHERE stat = 'male' AND stvoreno BETWEEN '$str' AND '$fin'";
 
 
-
-        // $sth = $db->query('SELECT * FROM book WHERE status = 1 ORDER BY price DESC ');
         $norm = $db->query("SET NAMES 'utf8'");
 
         $sth = $db->query($sql);
 
         $zvernenman = $sth->fetchAll(\PDO::FETCH_ASSOC);
         $zvernenman = $zvernenman[0]['COUNT(*)'];
-
-
-//        echo '<pre>';
-//        echo($regs);
-//        echo '</pre>';
-//        die;
+        
 
         if (!$zvernenman) {
             $zvernen = '0';
@@ -37,11 +31,11 @@ class ZvitModel
         return $zvernenman;
     }
 
-    public function zvernenwoman()
+    public function zvernenwoman($str, $fin)
     {
         $db = DbConnection::getInstance()->getPdo();
 
-        $sql = "SELECT COUNT(*) FROM job_seekers WHERE stat = 'female'";
+        $sql = "SELECT COUNT(*) FROM job_seekers WHERE stat = 'female' AND stvoreno BETWEEN '$str' AND '$fin'";
 
 
 
@@ -67,12 +61,12 @@ class ZvitModel
         return $zvernenwoman;
     }
 
-    public function grupinval()
+    public function grupinval($str, $fin)
     {
         $db = DbConnection::getInstance()->getPdo();
 
-        $sql = "SELECT grup, COUNT(*) FROM job_seekers GROUP BY grup";
-
+//        $sql = "SELECT grup, COUNT(*) FROM job_seekers GROUP BY grup WHERE stvoreno BETWEEN '$str' AND '$fin'";
+        $sql = "SELECT grup, stvoreno, COUNT(*) FROM job_seekers WHERE stvoreno BETWEEN '$str' AND '$fin' GROUP BY grup";
 
         $norm = $db->query("SET NAMES 'utf8'");
 
@@ -97,7 +91,7 @@ class ZvitModel
 
 
 
-    public function rezultat()
+    public function rezultat($str, $fin)
     {
         $pratsevlash=0;
         $lust=0;
@@ -110,15 +104,15 @@ class ZvitModel
 
         $db = DbConnection::getInstance()->getPdo();
 
-        $sql = "SELECT vuddialnosti, COUNT(*) FROM more_made GROUP BY vuddialnosti";
-
+//        $sql = "SELECT vuddialnosti, COUNT(*) FROM more_made GROUP BY vuddialnosti";
+        $sql = "SELECT vuddialnosti, data_made, COUNT(*) FROM more_made WHERE data_made BETWEEN '$str' AND '$fin' GROUP BY vuddialnosti";
 
         $norm = $db->query("SET NAMES 'utf8'");
 
         $sth = $db->query($sql);
 
         $rezultat = $sth->fetchAll(\PDO::FETCH_ASSOC);
-//        $rezultat = $rezultat[2]['COUNT(*)'];
+
         foreach($rezultat as $rezul){
             if ($rezul['vuddialnosti']=='Лист'){$lust=$rezul['COUNT(*)'];};
             if ($rezul['vuddialnosti']=='Дзвінок'){$dzvinock=$rezul['COUNT(*)'];};
@@ -204,7 +198,7 @@ class ZvitModel
 //
         }
 
-        return $statuswork;
+        return $statuswork = 'переробити запит';
 
     }
 
@@ -227,7 +221,7 @@ class ZvitModel
         return $reg;
     }
 
-    public function rezultatchoturu()
+    public function rezultatchoturu($str, $fin)
     {
         $pynkt_choturu_odun=0;
         $pynkt_choturu_dva=0;
@@ -238,7 +232,8 @@ class ZvitModel
         $db = DbConnection::getInstance()->getPdo();
 
 
-        $sql = "SELECT id_company, COUNT(*) FROM more_made GROUP BY id_company";
+        $sql = "SELECT id_company, data_made, COUNT(*) FROM more_made WHERE data_made BETWEEN '$str' AND '$fin' GROUP BY id_company";
+
 
         $norm = $db->query("SET NAMES 'utf8'");
 

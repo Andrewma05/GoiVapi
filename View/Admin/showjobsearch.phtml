@@ -39,22 +39,25 @@
     </div>
     <div class="col-md-4  text-right">
         <h4> Статус: <span class="label label-primary"><?= $seekers['statuswork'] ?></span></h4>
-        <h4> Дата створення анкети: <?= $seekers['stvoreno'] ?></h4>
+        <h4> Дата створення анкети: <?=$seekers['stvoreno']?></h4>
 <!--        <div class="row">-->
             <div class=" col-md-offset-5 col-md-7"><a href="/jobseekerupdate/<?= $seekers['id'] ?>" class="btn btn-success btn-block" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Редагувати</a><br></div>
             <!--<div class="text-right"><a  class="btn btn-warning" role="button">Працевлаштовано</a>-->
-            <div class=" col-md-offset-5 col-md-7"><a href="/pratsevlashtovano/<?= $seekers['id'] ?>" class="btn btn-warning btn-block" role="button"><i class="fa fa-check-square-o" aria-hidden="true"></i> Працевлаштовано</a></div>
+            <div class=" col-md-offset-5 col-md-7"><a href="/pratsevlashtovano/<?= $seekers['id'] ?>" class="btn btn-warning btn-block" role="button"><i class="fa fa-check-square-o" aria-hidden="true"></i> Працевлаштовано</a><br></div>
+            <div class=" col-md-offset-5 col-md-7"> <a href="/vidmovleno/<?= $seekers['id'] ?>" class="btn btn-danger btn-block" role="button"><i class="fa fa-ban" aria-hidden="true"></i> Відмовлено</a><br></div>
+        <div class=" col-md-offset-5 col-md-7"><a href="/napravleno/<?= $seekers['id'] ?>" class="btn btn-info btn-block" role="button"><i class="fa fa-university" aria-hidden="true"></i> Направлено</a></div>
+
 <!--        </div>-->
 
     </div>
 </div>
 <!---->
 
-
+<span id="edu"></span>
 <div class="row svalueanketa">
     <hr class="coloris">
 <h1>Освіта</h1>
-    <a href="/educationcreate/<?= $seekers['id'] ?>" class="btn btn-primary" role="button">Додати освіту</a>
+    <a href="/educationcreate/<?= $seekers['id'] ?>" class="btn btn-primary" role="button"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Додати освіту</a>
 
     <br>
     <h3 class="svalueanketa">
@@ -68,10 +71,17 @@
                 Спеціальність: <span class="slabelanketa"><?=$education['specialty']?></span><br>
                 Рівень освіти: <span class="slabelanketa"><?=$education['level_school']?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 Дата закінчення: <span class="slabelanketa"><?=$education['freedate']?></span><br>
-                        <div class="text-right"><a href="/educationupdate/<?=$education['id']?>" class="btn btn-success" role="button">Редагувати</a> <a class="btn btn-danger" role="button">Видалити</a></div>
+                        <div class="text-right"><a href="/educationupdate/<?=$education['id']?>" class="btn btn-success" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Редагувати</a>
+                            <a class="btn btn-danger education<?=$education['id']?>" role="button"><i class="fa fa-trash" aria-hidden="true"></i> Видалити</a></div>
 
                     </td>
                 </tr>
+                <script>
+                    $('.education<?=$education['id']?>').click(function() {
+                        $.get('/deleteeducation/<?=$education['id']?>');
+                        $(this).parent().parent().hide();
+                    });
+                </script>
         <?php endforeach; }?>
         </table>
     </h3>
@@ -80,11 +90,11 @@
 
 <!---->
 
-
+<span id="laswork"></span>
 <div class="row svalueanketa">
     <hr class="coloris">
 <h1>Останнє місце роботи</h1>
-    <a href="/experiencecreate/<?= $seekers['id'] ?>" class="btn btn-primary" role="button">Додати стаж</a>
+    <a href="/experiencecreate/<?= $seekers['id'] ?>" class="btn btn-primary" role="button"><i class="fa fa-briefcase" aria-hidden="true"></i> Додати місце роботи</a>
     <br>
     <h3 class="svalueanketa">
         <table class="table table-striped">
@@ -97,20 +107,17 @@
                         Загальний стаж(в місяцях):<span class="slabelanketa"><?=$experience['experience']?></span><br>
                         Спеціальність(професія):<span class="slabelanketa"><?=$experience['specialty']?></span><br>
                         Посада:<span class="slabelanketa"><?=$experience['posada']?></span><br>
-                                <div class="text-right"><a href="/experienceupdate/<?=$experience['id']?>" class="btn btn-success" role="button">Редагувати</> 
-                                <a class="btn btn-danger experience<?=$experience['id']?>" role="button">Видалити</a></div>
+                        <div class="text-right"><a href="/experienceupdate/<?=$experience['id']?>" class="btn btn-success" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Редагувати</a>
+                                <a class="btn btn-danger experience<?=$experience['id']?>" role="button"><i class="fa fa-trash" aria-hidden="true"></i> Видалити</a></div>
 
                     </td>
                 </tr>
                     <script>
                         $('.experience<?=$experience['id']?>').click(function() {
-                            $.get('/delete/<?=$experience['id']?>');
+                            $.get('/deleteexperience/<?=$experience['id']?>');
                             $(this).parent().parent().hide();
                         });
                     </script>
-
-
-
             <?php endforeach; }?>
         </table>
     </h3>
@@ -119,11 +126,11 @@
 
 <!--        -->
 
-
+<span id="prevapl"></span>
 <div class="row svalueanketa">
     <hr class="coloris">
 <h1>Попередні звернення</h1>
-    <a href="/pastresortcreate/<?= $seekers['id'] ?>" class="btn btn-primary" role="button">Додати попереднє звернення</a>
+    <a href="/pastresortcreate/<?= $seekers['id'] ?>" class="btn btn-primary" role="button"><i class="fa fa-file-text-o" aria-hidden="true"></i> Додати попереднє звернення</a>
     <br>
     <h3 class="svalueanketa">
         <table class="table table-striped">
@@ -135,21 +142,28 @@
                     Дата звернення:<span class="slabelanketa"><?=$pastresort['resort_date']?></span><br>
                     Результат:<span class="slabelanketa"><?=$pastresort['result']?></span><br>
                     Посада:<span class="slabelanketa"><?=$pastresort['posada']?></span><br>
-                        <div class="text-right"><a href="/pastresortupdate/<?=$pastresort['id']?>" class="btn btn-success" role="button">Редагувати</> <a class="btn btn-danger" role="button">Видалити</a></div>
+                        <div class="text-right"><a href="/pastresortupdate/<?=$pastresort['id']?>" class="btn btn-success" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Редагувати</a>
+                            <a class="btn btn-danger pastresort<?=$pastresort['id']?>" role="button"><i class="fa fa-trash" aria-hidden="true"></i> Видалити</a></div>
 
                     </td>
                 </tr>
+                    <script>
+                        $('.pastresort<?=$pastresort['id']?>').click(function() {
+                            $.get('/deletepastresort/<?=$pastresort['id']?>');
+                            $(this).parent().parent().hide();
+                        });
+                    </script>
             <?php endforeach; }?>
         </table>
     </h3>
 </div>
 
 <!--            -->
-
+<span id="addspec"></span>
 <div class="row svalueanketa">
     <hr class="coloris">
 <h1>Додаткові спеціальності</h1>
-    <a href="/morespecialtycreate/<?= $seekers['id'] ?>" class="btn btn-primary" role="button">Додати спеціальності</a>
+    <a href="/morespecialtycreate/<?= $seekers['id'] ?>" class="btn btn-primary" role="button"><i class="fa fa-cogs" aria-hidden="true"></i> Додати спеціальність</a>
     <br>
     <h3 class="svalueanketa">
         <table class="table table-striped">
@@ -158,21 +172,28 @@
                 <tr>
                     <td>
                     Додаткова спецільність:<span class="slabelanketa"><?=$morespecialty['specialty']?></span><br>
-                        <div class="text-right"><a href="/morespecialtyupdate/<?=$morespecialty['id']?>" class="btn btn-success" role="button">Редагувати</a> <a class="btn btn-danger" role="button">Видалити</a></div>
+                        <div class="text-right"><a href="/morespecialtyupdate/<?=$morespecialty['id']?>" class="btn btn-success" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Редагувати</a>
+                            <a class="btn btn-danger morespecialty<?=$morespecialty['id']?>" role="button"><i class="fa fa-trash" aria-hidden="true"></i> Видалити</a></div>
 
                     </td>
                 </tr>
+                    <script>
+                        $('.morespecialty<?=$morespecialty['id']?>').click(function() {
+                            $.get('/deletemorespecialty/<?=$morespecialty['id']?>');
+                            $(this).parent().parent().hide();
+                        });
+                    </script>
             <?php endforeach; }?>
         </table>
     </h3>
 </div>
 
 <!--            -->
-
+<span id="addnav"></span>
 <div class="row svalueanketa">
     <hr class="coloris">
 <h1>Додаткові навички</h1>
-    <a href="/moreskillscreate/<?= $seekers['id'] ?>" class="btn btn-primary" role="button">Додати навики</a>
+    <a href="/moreskillscreate/<?= $seekers['id'] ?>" class="btn btn-primary" role="button"><i class="fa fa-plus-square" aria-hidden="true"></i> Додати навики</a>
     <br>
     <h3 class="svalueanketa">
         <table class="table table-striped">
@@ -181,21 +202,28 @@
                     <tr>
                         <td>
                             Додаткові навички:<span class="slabelanketa"><?=$moreskills['skills']?></span><br>
-                                <div class="text-right"><a href="/moreskillsupdate/<?=$moreskills['id']?>" class="btn btn-success" role="button">Редагувати</a> <a class="btn btn-danger" role="button">Видалити</a></div>
+                                <div class="text-right"><a href="/moreskillsupdate/<?=$moreskills['id']?>" class="btn btn-success" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Редагувати</a>
+                                    <a class="btn btn-danger moreskills<?=$moreskills['id']?>" role="button"><i class="fa fa-trash" aria-hidden="true"></i> Видалити</a></div>
 
                         </td>
                     </tr>
+                    <script>
+                        $('.moreskills<?=$moreskills['id']?>').click(function() {
+                            $.get('/deletemoreskills/<?=$moreskills['id']?>');
+                            $(this).parent().parent().hide();
+                        });
+                    </script>
             <?php endforeach; }?>
         </table>
     </h3>
 </div>
 
 <!--    -->
-
+<span id="serc"></span>
 <div class="row svalueanketa">
     <hr class="coloris">
-<h1>Пошук</h1>
-    <a href="/jobsearchcreate/<?= $seekers['id'] ?>" class="btn btn-primary" role="button">Додати пошук</a>
+<h1>Пошук роботи</h1>
+    <a href="/jobsearchcreate/<?= $seekers['id'] ?>" class="btn btn-primary" role="button"><i class="fa fa-search-plus" aria-hidden="true"></i> Додати пошук</a>
     <br>
     <h3 class="svalueanketa">
         <table class="table table-striped">
@@ -207,10 +235,17 @@
                         Графік роботи:<span class="slabelanketa"><?=$search['job_grapf']?></span><br>
                         Тип роботи(основна, сумісництво):<span class="slabelanketa"><?=$search['sort_job']?></span><br>
                         Очікуваний рівень заробітної плати, грн:<span class="slabelanketa"><?=$search['salary']?></span><br>
-                            <div class="text-right"><a href="/jobsearchupdate/<?=$search['id']?>" class="btn btn-success" role="button">Редагувати</a> <a class="btn btn-danger" role="button">Видалити</a></div>
+                            <div class="text-right"><a href="/jobsearchupdate/<?=$search['id']?>" class="btn btn-success" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Редагувати</a>
+                                <a class="btn btn-danger search<?=$search['id']?>" role="button"><i class="fa fa-trash" aria-hidden="true"></i> Видалити</a></div>
 
                     </td>
                 </tr>
+                    <script>
+                        $('.search<?=$search['id']?>').click(function() {
+                            $.get('/deletesearch/<?=$search['id']?>');
+                            $(this).parent().parent().hide();
+                        });
+                    </script>
             <?php endforeach; }?>
         </table>
     </h3>
@@ -220,7 +255,7 @@
 
     <div class="row svalueanketa">
         <hr class="coloris">
-        <h1>Пророблена робота</h1>
+        <h1  id="dowork">Пророблена робота</h1>
         <a href="/moremadecreate/<?= $seekers['id'] ?>" class="btn btn-primary" role="button">Додати нові дії</a>
         <a href="/vidmovleno/<?= $seekers['id'] ?>" class="btn btn-danger" role="button">Відмовлено</a>
         <a href="/napravleno/<?= $seekers['id'] ?>" class="btn btn-info" role="button">Направлено</a>
@@ -242,12 +277,30 @@
                                     echo '</span><br>';
                                 };?>
                                 <span><?=$moremade['made']?></span><br>
-                                <div class="text-right"><a href="/moremadeupdate/<?=$moremade['id']?>" class="btn btn-success" role="button">Редагувати</a> <a class="btn btn-danger" role="button">Видалити</a></div>
+                                <div class="text-right"><a href="/moremadeupdate/<?=$moremade['id']?>" class="btn btn-success" role="button">Редагувати</a>
+                                    <?php if ($moremade['vuddialnosti']!=='Працевлаштовано' and $moremade['vuddialnosti']!=='Відмовлено'){
+                                     ?> <a class="btn btn-danger moremade<?=$moremade['id']?>" role="button"><i class="fa fa-trash" aria-hidden="true"></i> Видалити</a></div><?php }?>
                             </td>
                         </tr>
+                        <script>
+                            $('.moremade<?=$moremade['id']?>').click(function() {
+                                $.get('/deletemoremade/<?=$moremade['id']?>');
+                                $(this).parent().parent().hide();
+                            });
+                        </script>
                     <?php endforeach; }?>
             </table>
         </h3>
+    </div>
+
+    <div class="row">
+        <center>
+            <h6>
+                <a href="/jobseekercreate" class="thumbnail">
+                    <i class="fa fa-user-plus fa-2x" aria-hidden="true"> Створити нову анкету</i>
+                </a>
+            </h6>
+        </center>
     </div>
 
     <div class="row">

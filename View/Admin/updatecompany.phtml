@@ -1,46 +1,53 @@
-<div class="col-md-12">
-    <h4>
-        <form method="post" class="form-inline">
+<div class="page-header">
+    <h2>Редагувати організацію</h2>
+</div>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <form method="post" class="form-horizontal">
             <fieldset>
-                <legend>Редагувати компанію:</legend>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Назва організації:</label>
+                    <div class="col-md-8">
+                        <input type="text" name="company" class="form-control" value="<?=$oldcompany['company']?>">
+                    </div>
+                </div>
 
+                <div class="form-group">
+                    <label class="col-md-4 control-label">ПІБ керівника:</label>
+                    <div class="col-md-8">
+                        <input type="text" name="PIB" class="form-control" value="<?=$oldcompany['PIB']?>">
+                    </div>
+                </div>
 
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Контакти:</label>
+                    <div class="col-md-8">
+                        <textarea name="contact" rows="7" class="form-control"><?=$oldcompany['contact']?></textarea>
+                    </div>
+                </div>
 
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Телефон:</label>
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <div class="input-group-addon">+38</div>
+                            <input type="text" name="telefon" class="form-control" value="<?=$oldcompany['telefon']?>">
+                        </div>
+                    </div>
+                </div>
 
-
-
-                <div class="row"><div class="col-md-6 slabel">
-                        <label> Назва компанії:</div><div class="col-md-6 svalue">
-                        <input type="text" name="company" value="<?=$oldcompany['company']?>"><br>
-                        </label><br><br></div></div>
-
-                <div class="row"><div class="col-md-6 slabel">
-                        <label> ПІБ керівника:</div><div class="col-md-6 svalue">
-                        <input type="text" name="PIB" value="<?=$oldcompany['PIB']?>"><br>
-                        </label><br><br></div></div>
-
-
-                <div class="row"><div class="col-md-6 slabel">
-                        <label> Контакти:</div><div class="col-md-6 svalue">
-                        <textarea name="contact" rows="7"><?=$oldcompany['contact']?></textarea>
-                        </label><br><br></div></div>
-
-                <div class="row"><div class="col-md-6 slabel">
-                        <label> Телефон:</div><div class="col-md-6 svalue">
-                        <input type="text" name="telefon" value="<?=$oldcompany['telefon']?>"><br>
-                        </label><br><br></div></div>
-
-                <div class="row"><div class="col-md-6 slabel">
-                        <label> E-mail:</div><div class="col-md-6 svalue">
-                        <input type="email" name="email" value="<?=$oldcompany['email']?>"><br>
-                        </label><br><br></div></div>
-
-
-
+                <div class="form-group">
+                    <label class="col-md-4 control-label">E-mail:</label>
+                    <div class="col-md-8">
+                        <input type="email" name="email" class="form-control" value="<?=$oldcompany['email']?>">
+                    </div>
+                </div>
 
             </fieldset>
-            <button>Зберегти</button>
+            <button class="btn btn-success btn-lg" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Зберегти організацію</button>
+            <a href="/showcompany/<?=$oldcompany['id']?>" class="btn btn-danger btn-lg" role="button"><i class="fa fa-ban" aria-hidden="true"></i> Відмінити</a>
         </form>
-    </h4>
+    </div>
 </div>
+
 <b id="flash"><?=\Library\Session::getFlash()?></b>

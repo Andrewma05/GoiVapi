@@ -45,7 +45,7 @@
                     var searchValue = $('#search').val();
                     var yearValue = $('#year').val();
 //                    alert(searchValue);
-                    alert(searchValue + yearValue);
+//                    alert(searchValue + yearValue);
                     $.post('/showzvit', {search: searchValue, year: yearValue}).done(function(data) {
                         $("#tyt").html(data);
                     });
@@ -72,4 +72,3 @@
 
 
 
-    

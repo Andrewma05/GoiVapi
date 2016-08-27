@@ -1,122 +1,136 @@
-<h4>
-    <form method="post">
-        <fieldset>
+<div class="row">
+    <h6>
+        <a href="/showjobsearch/<?=$oldjobseeker['id']?>" class="thumbnail">
+            <i class="fa fa-arrow-left fa-2x" aria-hidden="true"> Повернутися до анкети шукача</i>
+        </a>
+    </h6>
+</div>
+<div class="page-header">
+    <h2>Редагувати анкету шукача роботи</h2>
+</div>
 
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <h4>
+            <form method="post" class="form-horizontal">
+                <fieldset>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Прізвище:</label>
+                        <div class="col-sm-8">
+                            <input type="text"  name="surname" class="form-control" value="<?=$oldjobseeker['surname']?>">
+                        </div>
+                    </div>
 
-            <legend>Редагувати анкету шукача роботи:</legend>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Ім'я:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="jobseekername" class="form-control" value="<?=$oldjobseeker['jobseekername']?>">
+                        </div>
+                    </div>
 
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">По-батькові:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="father" class="form-control" value="<?=$oldjobseeker['father']?>">
+                        </div>
+                    </div>
 
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Дата народження:</label>
+                        <div class="col-sm-8">
+                            <input type="date" name="birthdate" class="form-control" value="<?=$oldjobseeker['birthdate']?>">
+                        </div>
+                    </div>
 
-            <div class="row"><div class="col-md-6 slabel">
-                    <label> Прізвище:</div><div class="col-md-6 svalue">
-                    <input type="text"  name="surname" value="<?=$oldjobseeker['surname']?>">
-                    </label><br><br></div></div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Стать:</label>
+                        <div class="col-sm-8">
+                            <select name="stat" class="form-control" >
+                                <option value="<?=$oldjobseeker['stat']?>">
+                                    <?php if ($oldjobseeker['stat']=='male'){echo 'чоловіча';}
+                                    elseif ($oldjobseeker['stat']=='female'){echo 'жіноча';}
+                                    else{echo 'Стать не задана';}?>
+                                </option>
+                                <option value="male">
+                                    Чоловік
+                                </option>
+                                <option value="female">
+                                    Жінка
+                                </option>
+                            </select>
+                        </div>
+                    </div>
 
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Паспорт:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="pasport" class="form-control" value="<?=$oldjobseeker['pasport']?>">
+                        </div>
+                    </div>
 
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Адреса:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="adress" class="form-control" value="<?=$oldjobseeker['adress']?>">
+                        </div>
+                    </div>
 
-            <div class="row"><div class="col-md-6 slabel">
-                    <label>Ім'я:</div><div class="col-md-6 svalue">
-                    <input type="text" name="jobseekername" value="<?=$oldjobseeker['jobseekername']?>">
-                    </label><br><br></div></div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Номер телефону:</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <div class="input-group-addon">+38</div>
+                                <input type="text" name="contact" class="form-control" value="<?=$oldjobseeker['contact']?>">
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">E-mail:</label>
+                        <div class="col-sm-8">
+                            <input type="email" name="email" class="form-control" value="<?=$oldjobseeker['email']?>">
+                        </div>
+                    </div>
 
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Група інвалідності:</label>
+                        <div class="col-sm-8">
+                            <select name="grup" class="form-control">
+                                <option value="<?=$oldjobseeker['grup']?>">
+                                    <?=($oldjobseeker['grup'])?>
+                                </option>
+                                <option value="Без інвалідності">
+                                    Без інвалідності
+                                </option>
+                                <option value="І А - група">
+                                    І А - група
+                                </option>
+                                <option value="І Б - група">
+                                    І Б - група
+                                </option>
+                                <option value="ІІ - група">
+                                    ІІ - група
+                                </option>
+                                <option value="ІІІ - група">
+                                    ІІІ - група
+                                </option>
+                            </select>
+                        </div>
+                    </div>
 
-            <div class="row"><div class="col-md-6 slabel">
-                    <label>По-батькові:</div><div class="col-md-6 svalue">
-                    <input type="text" name="father" value="<?=$oldjobseeker['father']?>">
-                    </label><br><br></div></div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Дата звільнення з останнього місця роботи:</label>
+                        <div class="col-sm-8">
+                            <input type="date" name="freedate" class="form-control" value="<?=$oldjobseeker['freedate']?>">
+                        </div>
+                    </div>
 
+                </fieldset>
+                <button class="btn btn-success btn-lg" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Зберегти анкету</button>
+                <a href="/showjobsearch/<?=$oldjobseeker['id']?>" class="btn btn-danger btn-lg" role="button"><i class="fa fa-ban" aria-hidden="true"></i> Відмінити</a>
+            </form>
+        </h4>
+    </div>
+</div>
 
-
-            <div class="row"><div class="col-md-6 slabel">
-                    <label> Дата народження:</div><div class="col-md-6 svalue">
-                    <input type="date" name="birthdate" value="<?=$oldjobseeker['birthdate']?>">
-                    </label><br><br></div></div>
-
-
-
-            <div class="row"><div class="col-md-6 slabel">
-                    <label> Стать:</div><div class="col-md-6 svalue">
-                    <select name="stat">
-                        <option value="<?=$oldjobseeker['stat']?>">
-                            <?php if ($oldjobseeker['stat']=='male'){echo 'чоловіча';}
-                            elseif ($oldjobseeker['stat']=='female'){echo 'жіноча';}
-                            else{echo 'Стать не задана';}?>
-                        </option>
-                        <option value="male">
-                            Чоловік
-                        </option>
-                        <option value="female">
-                            Жінка
-                        </option>
-                    </select>
-                    </label><br><br></div></div>
-
-            <div class="row"><div class="col-md-6 slabel">
-                    <label> Паспорт:</div><div class="col-md-6 svalue">
-                    <input type="text" name="pasport" value="<?=$oldjobseeker['pasport']?>">
-                    </label><br><br></div></div>
-
-
-
-            <div class="row"><div class="col-md-6 slabel">
-                    <label> Адреса:</div><div class="col-md-6 svalue">
-                    <input type="text" name="adress" value="<?=$oldjobseeker['adress']?>"><br>
-                    </label><br></div></div>
-
-
-
-            <div class="row"><div class="col-md-6 slabel">
-                    <label> Номер телефону:</div><div class="col-md-6 svalue">
-                    <input type="text" name="contact" value="<?=$oldjobseeker['contact']?>"><br>
-                    </label><br></div></div>
-
-
-
-            <div class="row"><div class="col-md-6 slabel">
-                    <label> E-mail:</div><div class="col-md-6 svalue">
-                    <input type="email" name="email" value="<?=$oldjobseeker['email']?>"><br>
-                    </label><br></div></div>
-
-
-
-            <div class="row"><div class="col-md-6 slabel">
-                    <label> Група інвалідності:</div><div class="col-md-6 svalue">
-                    <select name="grup">
-                        <option value="<?=$oldjobseeker['grup']?>">
-                            <?=($oldjobseeker['grup'])?>
-                        </option>
-                        <option value="Без інвалідності">
-                            Без інвалідності
-                        </option>
-                        <option value="І А - група">
-                            І А - група
-                        </option>
-                        <option value="І Б - група">
-                            І Б - група
-                        </option>
-                        <option value="ІІ - група">
-                            ІІ - група
-                        </option>
-                        <option value="ІІІ - група">
-                            ІІІ - група
-                        </option>
-                    </select>
-                    </label><br><br></div></div>
-
-
-
-            <div class="row"><div class="col-md-6 slabel">
-                    <label> Дата звільнення з останнього місця роботи:</div><div class="col-md-6 svalue">
-                    <input type="date" name="freedate" value="<?=$oldjobseeker['freedate']?>">
-                    </label><br><br></div></div>
-            
-
-
-
-        </fieldset>
-        <button class="btn btn-success btn-lg" type="submit"><i class="fa fa-plus-circle" aria-hidden="true"></i> Додати анкету</button>
-        <a href="/thirdpage" class="btn btn-danger btn-lg" role="button"><i class="fa fa-ban" aria-hidden="true"></i> Відмінити</a>
-    </form>
-</h4>
 <b id="flash"><?=\Library\Session::getFlash()?></b>

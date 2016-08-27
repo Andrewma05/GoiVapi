@@ -20,43 +20,56 @@
             ?>
         </small> </h2>
 </div>
-<div class="col-md-12">
-    <h4>
-        <form method="post" class="form-inline">
-            <fieldset>
-                <div class="row"><div class="col-md-6 slabel">
-                        <label> Назва компанії:</div><div class="col-md-6 svalue">
-                        <input type="text" name="company" value="<?=$form->company?>"><br>
-                        </label><br><br></div></div>
 
-                <div class="row"><div class="col-md-6 slabel">
-                        <label> ПІБ керівника:</div><div class="col-md-6 svalue">
-                        <input type="text" name="PIB" value="<?=$form->PIB?>"><br>
-                        </label><br><br></div></div>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
 
+            <form method="post" class="form-horizontal">
+                <fieldset>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Назва організації:</label>
+                        <div class="col-md-8">
+                            <input type="text" name="company" class="form-control" placeholder="Назва організації" tabindex="1" autofocus value="<?=$form->company?>">
+                        </div>
+                    </div>
 
-                <div class="row"><div class="col-md-6 slabel">
-                        <label> Контакти:</div><div class="col-md-6 svalue">
-                        <textarea name="contact" rows="7" value="<?=$form->contact?>"></textarea>
-                        </label><br><br></div></div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">ПІБ керівника:</label>
+                        <div class="col-md-8">
+                            <input type="text" name="PIB" class="form-control" tabindex="2" value="<?=$form->PIB?>">
+                        </div>
+                    </div>
 
-                <div class="row"><div class="col-md-6 slabel">
-                        <label> Телефон:</div><div class="col-md-6 svalue">
-                        <input type="text" name="telefon" value="<?=$form->telefon?>"><br>
-                        </label><br><br></div></div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Контакти:</label>
+                        <div class="col-md-8">
+                            <textarea name="contact" rows="7" class="form-control" tabindex="3" placeholder="Адреса та додаткові телефони" value="<?=$form->contact?>"></textarea>
+                        </div>
+                    </div>
 
-                <div class="row"><div class="col-md-6 slabel">
-                        <label> E-mail:</div><div class="col-md-6 svalue">
-                        <input type="email" name="email" value="<?=$form->email?>"><br>
-                        </label><br><br></div></div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Телефон:</label>
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                <div class="input-group-addon">+38</div>
+                                <input type="text" name="telefon" class="form-control" tabindex="4" placeholder="0501234567" value="<?=$form->telefon?>">
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">E-mail:</label>
+                        <div class="col-md-8">
+                            <input type="email" name="email" class="form-control" tabindex="5" placeholder="example@gmail.com" value="<?=$form->email?>">
+                        </div>
+                    </div>
+                    
+                </fieldset>
+                <button class="btn btn-success btn-lg" type="submit"><i class="fa fa-plus-circle" aria-hidden="true"></i> Додати організацію</button>
+                <a href="/showallcompany/<?=$form->vud?>" class="btn btn-danger btn-lg" role="button"><i class="fa fa-ban" aria-hidden="true"></i> Відмінити</a>
+            </form>
 
-
-
-            </fieldset>
-            <button class="btn btn-success btn-lg" type="submit"><i class="fa fa-plus-circle" aria-hidden="true"></i> Додати організацію</button>
-            <a href="/showallcompany/<?=$form->vud?>" class="btn btn-danger btn-lg" role="button"><i class="fa fa-ban" aria-hidden="true"></i> Відмінити</a>
-        </form>
-    </h4>
+    </div>
 </div>
+
 <b id="flash"><?=\Library\Session::getFlash()?></b>
