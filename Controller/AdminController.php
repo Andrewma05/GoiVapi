@@ -33,6 +33,7 @@ use Model\ZvitModel;
 use Model\DeleteModel;
 use Library\DbConnection;
 use Model\JobSeekerModel;
+use Model\VudInvalModel;
 
 
 class AdminController extends Controller
@@ -56,20 +57,28 @@ class AdminController extends Controller
         return $this->render('firstpage', $args);
     }
 
+    public function firstpageuserAction(Request $request)
+    {
+
+        $adminModel = new AdminModel();
+        $userMe = $adminModel->userMe();
+        $regs = $adminModel->showreg();
+        $reg = $adminModel->reg();
+        $reg = $reg[0]['region'];
+
+
+        $args = array(
+            'user' => $userMe['0'],
+            'regs' => $regs,
+            'reg' => $reg
+
+        );
+        return $this->render('firstpageuser', $args);
+    }
+
     public function thirdpageAction(Request $request)
     {
 
-//        після створення бази даних створити запит для тогого щоб виводити випадаючий список
-
-
-//        $adminModel = new AdminModel();
-//        $userMe = $adminModel->userMe();
-//
-//        $args = array(
-//            'user' => $userMe
-//        );
-
-//
         return $this->render('thirdpage');
     }
 
@@ -106,7 +115,7 @@ class AdminController extends Controller
                 Router::redirect('/alluseres');
             }
 
-            Session::setFlash('Error');
+            Session::setFlash('<h1 style="color: darkred">ЗАПОВНІТЬ ВСІ ПОЛЯ</h1>');
         }
 
         $args = array(
@@ -149,7 +158,7 @@ class AdminController extends Controller
                     'stvoreno' => (new \DateTime())->format('Y-m-d'),
                     'id_wuser' => $_SESSION['id'],
                     'id_region' => $_SESSION['id_region'],
-                    'statuswork' => 'В пошуках'
+                    'statuswork' => 'В пошуках роботи'
                 ));
                 Session::setFlash('Success');
                 
@@ -159,7 +168,7 @@ class AdminController extends Controller
                 Router::redirect("/showjobsearch/$idseeker");
             }
 
-            Session::setFlash('Error');
+            Session::setFlash('<h1 style="color: darkred">ЗАПОВНІТЬ ВСІ ПОЛЯ</h1>');
         }
 
         $args = array(
@@ -199,7 +208,7 @@ class AdminController extends Controller
                 Router::redirect("/showjobsearch/$id_jobseekers#edu");
             }
 
-            Session::setFlash('Error');
+            Session::setFlash('<h1 style="color: darkred">ЗАПОВНІТЬ ВСІ ПОЛЯ</h1>');
         }
 
         $args = array(
@@ -236,7 +245,7 @@ class AdminController extends Controller
                 Router::redirect("/showjobsearch/$id_jobseekers#laswork");
             }
 
-            Session::setFlash('Error');
+            Session::setFlash('<h1 style="color: darkred">ЗАПОВНІТЬ ВСІ ПОЛЯ</h1>');
         }
 
         $args = array(
@@ -274,7 +283,7 @@ class AdminController extends Controller
                 Router::redirect("/showjobsearch/$id_jobseekers#prevapl");
             }
 
-            Session::setFlash('Error');
+            Session::setFlash('<h1 style="color: darkred">ЗАПОВНІТЬ ВСІ ПОЛЯ</h1>');
         }
 
         $args = array(
@@ -308,7 +317,7 @@ class AdminController extends Controller
                 Router::redirect("/showjobsearch/$id_jobseekers#addspec");
             }
 
-            Session::setFlash('Error');
+            Session::setFlash('<h1 style="color: darkred">ЗАПОВНІТЬ ВСІ ПОЛЯ</h1>');
         }
 
         $args = array(
@@ -341,7 +350,7 @@ class AdminController extends Controller
                 Router::redirect("/showjobsearch/$id_jobseekers#addnav");
             }
 
-            Session::setFlash('Error');
+            Session::setFlash('<h1 style="color: darkred">ЗАПОВНІТЬ ВСІ ПОЛЯ</h1>');
         }
 
         $args = array(
@@ -381,7 +390,7 @@ class AdminController extends Controller
                 Router::redirect("/showjobsearch/$id_jobseekers#serc");
             }
 
-            Session::setFlash('Error');
+            Session::setFlash('<h1 style="color: darkred">ЗАПОВНІТЬ ВСІ ПОЛЯ</h1>');
         }
 
         $args = array(
@@ -431,6 +440,7 @@ class AdminController extends Controller
 
     public function alljobseekeresAction(Request $request)
     {
+
         $search=null;
         $start = new AllJobSeekeresModel($request);
         $seekerses = $start->showalljobseekers();
@@ -510,7 +520,7 @@ class AdminController extends Controller
                 Router::redirect("/showallcompany/$vud");
             }
 
-            Session::setFlash('Error');
+            Session::setFlash('<h1 style="color: darkred">ЗАПОВНІТЬ ВСІ ПОЛЯ</h1>');
         }
 
         $args = array(
@@ -885,7 +895,8 @@ class AdminController extends Controller
                     'vuddialnosti' => $form->vuddialnosti,
                     'made' => $form->made,
                     'id_wuser' => $_SESSION['id'],
-                    'data_made' => (new \DateTime())->format('Y-m-d')
+                    'data_made' => (new \DateTime())->format('Y-m-d'),
+                    'id_region' => $_SESSION['id_region']
                 ));
                 Session::setFlash('Success');
 
@@ -893,7 +904,7 @@ class AdminController extends Controller
                 Router::redirect("/showjobsearch/$id_jobseekers");
             }
 
-            Session::setFlash('Error');
+            Session::setFlash('<h1 style="color: darkred">ЗАПОВНІТЬ ВСІ ПОЛЯ</h1>');
         }
 
         $args = array(
@@ -941,7 +952,7 @@ class AdminController extends Controller
         $id_jobseekers = $request -> get('id');
 
         $form = new MoreMadeCreateModel($request);
-
+        $form->id_jobseekers = $id_jobseekers;
         $regs = $form->showreg();
 
 
@@ -955,7 +966,8 @@ class AdminController extends Controller
                     'vuddialnosti' => 'Відмовлено',
                     'made' => $form->made,
                     'id_wuser' => $_SESSION['id'],
-                    'data_made' => (new \DateTime())->format('Y-m-d')
+                    'data_made' => (new \DateTime())->format('Y-m-d'),
+                    'id_region' => $_SESSION['id_region']
                 ));
                 $dizact = new JobSeekerCreateModel($request);
                 
@@ -968,9 +980,8 @@ class AdminController extends Controller
                 Router::redirect("/showjobsearch/$id_jobseekers");
             }
 
-            Session::setFlash('Error');
+            Session::setFlash('<h1 style="color: darkred">ЗАПОВНІТЬ ВСІ ПОЛЯ</h1>');
         }
-
         $args = array(
             'form' => $form,
             'regs' => $regs
@@ -984,7 +995,7 @@ class AdminController extends Controller
         $id_jobseekers = $request -> get('id');
 
         $form = new MoreMadeCreateModel($request);
-
+        $form->id_jobseekers = $id_jobseekers;
         $regs = $form->showreg();
 
 
@@ -998,7 +1009,8 @@ class AdminController extends Controller
                     'vuddialnosti' => 'Працевлаштовано',
                     'made' => $form->made,
                     'id_wuser' => $_SESSION['id'],
-                    'data_made' => (new \DateTime())->format('Y-m-d')
+                    'data_made' => (new \DateTime())->format('Y-m-d'),
+                    'id_region' => $_SESSION['id_region']
                 ));
                 $dizact = new JobSeekerCreateModel($request);
 
@@ -1011,7 +1023,7 @@ class AdminController extends Controller
                 Router::redirect("/showjobsearch/$id_jobseekers");
             }
 
-            Session::setFlash('Error');
+            Session::setFlash('<h1 style="color: darkred">ЗАПОВНІТЬ ВСІ ПОЛЯ</h1>');
         }
 
         $args = array(
@@ -1022,12 +1034,57 @@ class AdminController extends Controller
         return $this->render('pratsevlashtovano', $args);
     }
 
+
+    public function povtornezverneniaAction(Request $request)
+    {
+        $id_jobseekers = $request -> get('id');
+
+        $form = new MoreMadeCreateModel($request);
+        $form->id_jobseekers = $id_jobseekers;
+        $regs = $form->showreg();
+
+
+
+        if ($request->isPost()) {
+
+            if ($form->isValid()) {
+
+                $form->save(array(
+                    'id_jobseekers' => $id_jobseekers,
+                    'vuddialnosti' => 'Повторне звернення',
+                    'made' => $form->made,
+                    'id_wuser' => $_SESSION['id'],
+                    'data_made' => (new \DateTime())->format('Y-m-d'),
+                    'id_region' => $_SESSION['id_region']
+                ));
+                $dizact = new JobSeekerCreateModel($request);
+
+                $dizact->dizact(array(
+                    'statuswork' => 'В пошуках роботи',
+                    'id' => $id_jobseekers
+                ));
+
+                // todo: function redirect($to)
+                Router::redirect("/showjobsearch/$id_jobseekers");
+            }
+
+            Session::setFlash('<h1 style="color: darkred">ЗАПОВНІТЬ ВСІ ПОЛЯ</h1>');
+        }
+
+        $args = array(
+            'form' => $form,
+            'regs' => $regs
+
+        );
+        return $this->render('povtornezvernenia', $args);
+    }
+
     public function napravlenoAction(Request $request)
     {
         $id_jobseekers = $request -> get('id');
 
         $form = new MoreMadeCreateModel($request);
-
+        $form->id_jobseekers = $id_jobseekers;
         $regs = $form->showreg();
 
 
@@ -1038,11 +1095,12 @@ class AdminController extends Controller
 
                 $form->savenapravl(array(
                     'id_jobseekers' => $id_jobseekers,
-                    'vuddialnosti' => 'Направлено',
+                    'vuddialnosti' => 'Направлено лист, клопотання (звернення)',
                     'made' => $form->made,
                     'id_wuser' => $_SESSION['id'],
                     'data_made' => (new \DateTime())->format('Y-m-d'),
                     'id_company' => $form->id_company,
+                    'id_region' => $_SESSION['id_region']
                 ));
 
 
@@ -1050,7 +1108,7 @@ class AdminController extends Controller
                 Router::redirect("/showjobsearch/$id_jobseekers");
             }
 
-            Session::setFlash('Error');
+            Session::setFlash('<h1 style="color: darkred">ЗАПОВНІТЬ ВСІ ПОЛЯ</h1>');
         }
 
         $args = array(
@@ -1176,7 +1234,14 @@ class AdminController extends Controller
         $s->execute();
     }
 
-
+    public function deletecompanyAction(Request $request)
+    {
+        $id = $request -> get('id');
+        $db = DbConnection::getInstance()->getPdo();
+        $sql = "DELETE FROM company WHERE id = '$id'";
+        $s = $db->prepare($sql);
+        $s->execute();
+    }
 
 
 
@@ -1289,13 +1354,17 @@ class AdminController extends Controller
         $zvernenwoman = $zvit->zvernenwoman($str, $fin);
         $zvernen = $zvernenman + $zvernenwoman;
         $grupuinval = $zvit->grupinval($str, $fin);
+        $vudinval = $zvit->vudinval($str, $fin);
         $rezultat = $zvit->rezultat($str, $fin);
-
-
+        $kilkzdrupinval = $zvit->kilkzdrupinval($str, $fin);
         $choturu = $zvit->rezultatchoturu($str, $fin);
 
+        $minusposhuk = $zvit->minusposhuk($str, $fin);
+            
+        $plusposhuk = $zvit->plusposhuk($str, $fin);
+        
+        $vedposhuk = $plusposhuk - $minusposhuk['pratsevlash'] - $minusposhuk['vidmovleno'] + $minusposhuk['povtorn'];
 
-        $vudinval = 1;
 
         $statuswork = $zvit->statuswork();
         $reg = $zvit->reg();
@@ -1311,11 +1380,14 @@ class AdminController extends Controller
             'rezultat' => $rezultat,
             'statuswork' => $statuswork,
             'reg' => $reg[0],
-            'choturu' => $choturu
+            'choturu' => $choturu,
+            'vudinval' => $vudinval,
+            'kilkzdrupinval' => $kilkzdrupinval,
+            'vedposhuk' => $vedposhuk
 
 
         );
-        return $this->render('showzvit', $masuv);
+        return $this->renderforjavascript('showzvit', $masuv);
     }
 
     public function zvitAction(Request $request)
@@ -1331,4 +1403,24 @@ class AdminController extends Controller
         return $this->render('zvit', $masuv);
     }
 
+    public function createvudinvalAction(Request $request)
+    {
+        $vudinval = $request->post('vudinval');
+//        return $vudinval;
+        $inval = new VudInvalModel($request);
+
+        $new = $inval->save(array(
+            'vud' => $vudinval
+        ));
+
+        $allvudinval = $inval->showvud_inval();
+
+        $masuv = array(
+            'vud_invals' => $allvudinval,
+            'new' => $new,
+//            'olduser' => $olduser[0]
+        );
+
+        return $this->renderforjavascript('plusnewvudinval', $masuv);
+    }
 }

@@ -30,7 +30,6 @@ class ShowAllCompanyModel
 
         if (!$regs) {
             $regs = null;
-//            throw new NotFoundException('Шукача не знайдено');
         }
 
         return $regs;

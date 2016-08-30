@@ -21,11 +21,6 @@ class AllUseresModel
 
         $regs = $sth->fetchAll(\PDO::FETCH_ASSOC);
 
-
-        if (!$regs) {
-            throw new NotFoundException('Шукача не знайдено');
-        }
-
         return $regs;
     }
 
@@ -39,10 +34,6 @@ class AllUseresModel
 
 
         $regions = $sth->fetchAll(\PDO::FETCH_ASSOC);
-
-        if (!$regions) {
-            throw new NotFoundException('Регіон не знайдено');
-        }
 
         return $regions;
     }

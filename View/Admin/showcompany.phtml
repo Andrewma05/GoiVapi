@@ -18,14 +18,19 @@
                 Контакти: <span class="slabelanketa"><?= $company['contact'] ?></span><br>
                 E-mail: <span class="slabelanketa"><?= $company['email'] ?></span><br>
                 <br>
-
             </div>
         </h3>
     </div>
     <div class="col-md-4  text-right">
         <div class=" col-md-offset-5 col-md-7"><a href="/updatecompany/<?= $company['id'] ?>" class="btn btn-success btn-block" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Редагувати</a><br></div>
         <!--<div class="text-right"><a  class="btn btn-warning" role="button">Працевлаштовано</a>-->
-        <div class=" col-md-offset-5 col-md-7"><a href="#" class="btn btn-danger btn-block" role="button"><i class="fa fa-trash" aria-hidden="true"></i> Видалити</a></div>
+        <div class=" col-md-offset-5 col-md-7"><a href="#" class="btn btn-danger btn-block company<?=$company['id']?>" role="button"><i class="fa fa-trash" aria-hidden="true"></i> Видалити</a></div>
         <!--        </div>-->
     </div>
 </div>
+<script>
+    $('.company<?=$company['id']?>').click(function() {
+        $.get('/deletecompany/<?=$company['id']?>');
+        window.location = "/thirdpage";
+    });
+</script>

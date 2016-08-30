@@ -57,9 +57,10 @@ class MoreMadeCreateModel
 
     public function save(array $user)
     {
+
         $db = DbConnection::getInstance()->getPdo();
-        $sql = 'INSERT INTO more_made (id_jobseekers, vuddialnosti, made, id_wuser, data_made)
-                VALUES (:id_jobseekers, :vuddialnosti, :made, :id_wuser, :data_made)';
+        $sql = 'INSERT INTO more_made (id_jobseekers, vuddialnosti, made, id_wuser, data_made, id_region)
+                VALUES (:id_jobseekers, :vuddialnosti, :made, :id_wuser, :data_made, :id_region)';
         $s = $db->prepare($sql);
         $s->execute($user);
     }
@@ -75,9 +76,7 @@ class MoreMadeCreateModel
 
         $regs = $sth->fetchAll(\PDO::FETCH_ASSOC);
 
-        if (!$regs) {
-            throw new NotFoundException('Books not found');
-        }
+
 
         return $regs;
     }
@@ -103,8 +102,8 @@ class MoreMadeCreateModel
     public function savenapravl(array $user)
     {
         $db = DbConnection::getInstance()->getPdo();
-        $sql = 'INSERT INTO more_made (id_jobseekers, vuddialnosti, made, id_wuser, data_made, id_company)
-                VALUES (:id_jobseekers, :vuddialnosti, :made, :id_wuser, :data_made, :id_company)';
+        $sql = 'INSERT INTO more_made (id_jobseekers, vuddialnosti, made, id_wuser, data_made, id_company, id_region)
+                VALUES (:id_jobseekers, :vuddialnosti, :made, :id_wuser, :data_made, :id_company, :id_region)';
         $s = $db->prepare($sql);
         $s->execute($user);
     }

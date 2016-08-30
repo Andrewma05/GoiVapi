@@ -1,3 +1,34 @@
+
+<script>
+    $(document).ready(function() {
+
+        $('#botn').click(function () {
+            var vudinval;
+            vudinval=prompt('Введіть новий вид інвалідності');
+            if (vudinval !==''&& vudinval!==null) {
+//            alert(vudinval);
+                $.post('/createvudinval', {vudinval: vudinval}).done(function(data) {
+                    $("#tyt").html(data);
+                });
+
+
+            }
+        });
+//        $('#botn').click(function () {
+//            var searchValue = $('#search').val();
+//            var yearValue = $('#year').val();
+//                    alert(searchValue);
+//                    alert(searchValue + yearValue);
+//            $.post('/showzvit', {search: searchValue, year: yearValue}).done(function(data) {
+//                $("#tyt").html(data);
+            });
+//        });
+//    });
+</script>
+
+
+
+
 <div class="page-header">
     <h2>Додати анкету шукача роботи</h2>
 </div>
@@ -44,7 +75,7 @@
                 <div class="form-group">
                     <label class="col-sm-4 control-label">Дата народження:</label>
                     <div class="col-sm-8">
-                        <input type="date" class="form-control" name="birthdate" tabindex="5" value="<?=$form->birthdate?>">
+                        <input type="date" class="form-control" name="birthdate" id="birthdate" tabindex="5" value="<?=$form->birthdate?>">
                     </div>
                 </div>
 
@@ -58,7 +89,7 @@
                 <div class="form-group">
                     <label class="col-sm-4 control-label">Адреса:</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="adress" tabindex="7" value="<?=$form->adress?>">
+                        <input type="text" class="form-control" name="adress" id="adress" tabindex="7" value="<?=$form->adress?>">
                     </div>
                 </div>
 
@@ -67,7 +98,7 @@
                     <div class="col-sm-8">
                         <div class="input-group">
                             <div class="input-group-addon">+38</div>
-                            <input type="text" class="form-control" placeholder="0501234567" name="contact" tabindex="8" value="<?=$form->contact?>">
+                            <input type="text" class="form-control" placeholder="0501234567" name="contact" id="contact" tabindex="8" value="<?=$form->contact?>">
                         </div>
                     </div>
                 </div>
@@ -83,15 +114,16 @@
                     <label class="col-sm-4 control-label">Вид інвалідності:</label>
                     <div class="col-sm-8">
                         <div class="input-group">
-                            <select name="id_vud_inval" class="form-control" tabindex="10" >
-                                <?php foreach ($vud_invals as $vud_inval): ?>
-                                    <option value="<?=$vud_inval['id']?>">
-                                        <?=$vud_inval['vud']?>
-                                    </option>
-                                <?php endforeach; ?>
+                            <select id="tyt" name="id_vud_inval" class="form-control" tabindex="10" >
+                                    <?php foreach ($vud_invals as $vud_inval): ?>
+                                        <option value="<?=$vud_inval['id']?>">
+                                            <?=$vud_inval['vud']?>
+                                        </option>
+                                    <?php endforeach; ?>
+
                             </select>
                             <span class="input-group-btn">
-                                <button class="btn btn-primary" type="button"><i class="fa fa-plus" aria-hidden="true"></i> Додати вид інвалідності</button>
+                                <button id="botn" class="btn btn-primary" type="button"><i class="fa fa-plus" aria-hidden="true"></i> Додати вид інвалідності</button>
                             </span>
                         </div>
                     </div>

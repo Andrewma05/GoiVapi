@@ -1,13 +1,17 @@
-<form method="post">
+<div class="page-header">
+    <h2>Працевлаштовано</h2>
+</div>
+<form method="post"  class="form-horizontal">
     <fieldset>
-        <legend>Працевлаштовано</legend>
-        
-            <label>Коментар:
-                <input type="text" name="made" value="<?=$form->made?>">
-            </label>
-        
+        <div class="form-group">
+            <label class="col-md-4 control-label">Коментар:</label>
+            <div class="col-md-8">
+                <input type="text" name="made" class="form-control" tabindex="1" autofocus value="<?=$form->made?>">
+            </div>
+        </div>
     </fieldset>
-    <button>Зберегти</button>
+        <button class="btn btn-success btn-lg" type="submit"><i class="fa fa-plus-circle" aria-hidden="true"></i> Працевлаштовано</button>
+        <a href="/showjobsearch/<?=$form->id_jobseekers?>" class="btn btn-danger btn-lg" role="button"><i class="fa fa-ban" aria-hidden="true"></i> Відмінити</a>
 </form>
 
 <b id="flash"><?=\Library\Session::getFlash()?></b>

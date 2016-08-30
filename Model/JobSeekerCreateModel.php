@@ -52,14 +52,9 @@ class JobSeekerCreateModel
         $res = ($this->surname !== '' &&
             $this->jobseekername !== '' &&
             $this->father !== '' &&
-            $this->stat !== '' &&
             $this->birthdate !== '' &&
-            $this->pasport !== '' &&
             $this->adress !== '' &&
-            $this->contact &&
-            $this->email !== '' &&
-            $this->grup !== '' &&
-            $this->freedate !== '');
+            $this->contact !== '');
 
 
         return $res;
@@ -85,9 +80,6 @@ class JobSeekerCreateModel
 
         $vud_inval = $sth->fetchAll(\PDO::FETCH_ASSOC);
 
-        if (!$vud_inval) {
-            throw new NotFoundException('Видів інвалідності незнайдено');
-        }
 
         return $vud_inval;
     }

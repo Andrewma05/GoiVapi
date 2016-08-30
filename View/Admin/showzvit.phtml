@@ -1,41 +1,47 @@
 <div class="stilozvit">
-    1. Кількість осіб, що звернулись до центру: <?=$zvernen?> осіб:
-    <div class="stiloznachzvit">- з них жінок: <?=$zvernenwoman?>;</div>
-    <div class="stiloznachzvit">- з них чоловіків: <?=$zvernenman?>;</div>
+    1. Кількість осіб, що звернулись до центру:<b> <?=$zvernen?> </b>
+    <div class="stiloznachzvit">- з них жінок:<b> <?=$zvernenwoman?></b>;</div>
+    <div class="stiloznachzvit">- з них чоловіків:<b> <?=$zvernenman?></b>;</div>
 </div>
 <div class="stilozvit">
-    2. З них мають інвалідність: *знач* осіб:
-    <?php foreach ($grupuinval as $grupinval): ?>
-        <div class="stiloznachzvit">- з них <?=$grupinval['grup']?>: <?=$grupinval['COUNT(*)']?> осіб;</div>
+    2. З них мають інвалідність:<b> <?=$kilkzdrupinval?></b>:
+
+    <div class="stiloznachzvit">- з них І А - група:<b> <?=$grupuinval['oduna']?></b>;</div>
+    <div class="stiloznachzvit">- з них І Б - група:<b> <?=$grupuinval['odunb']?></b>;</div>
+    <div class="stiloznachzvit">- з них ІІ - група:<b> <?=$grupuinval['dva']?></b>;</div>
+    <div class="stiloznachzvit">- з них ІІІ - група:<b> <?=$grupuinval['tru']?></b>;</div>
+    <div class="stiloznachzvit">- з них Без інвалідності:<b> <?=$grupuinval['bez']?></b>;</div>
+
+<!--    <div class="stiloznachzvit">за видами інвалідності:</div>-->
+    <?php foreach ($vudinval as $vudinva): ?>
+        <div class="stiloznachzvit">- з них <?=$vudinva['vud']?>:<b> <?=$vudinva['COUNT( job_seekers.id )']?></b>;</div>
     <?php endforeach;?>
 
-    <div class="stiloznachzvit">- з них кожного виду інвалідності: *знач*;</div>
 </div>
 <div class="stilozvit">
     3. Результат проведенної роботи:
-    <div class="stiloznachzvit">- працевлаштовано <?=$rezultat['pynkt_tru_odun']?> осіб;</div>
-    <div class="stiloznachzvit">- надано допомоги у працевлаштуванні <?=$rezultat['pynkt_tru_dva']?> особам;</div>
-    <div class="stiloznachzvit">- надання допомоги з оформлення документів <?=$rezultat['pynkt_tru_tru']?> особам;</div>
-    <div class="stiloznachzvit">- ведеться робота з пошуку робочого місця для <?=$statuswork?> осіб;</div>
-    <div class="stiloznachzvit">- відмовлено у наданні допомоги <?=$rezultat['pynkt_tru_piat']?> особам;</div>
-    <div class="stiloznachzvit">- надано <?=$rezultat['pynkt_tru_shist']?> консультацій</div>
+    <div class="stiloznachzvit">- працевлаштовано <b><?=$rezultat['pynkt_tru_odun']?></b>;</div>
+    <div class="stiloznachzvit">- надано допомоги у працевлаштуванні <b><?=$rezultat['pynkt_tru_dva']?></b>;</div>
+    <div class="stiloznachzvit">- надання допомоги з оформлення документів <b><?=$rezultat['pynkt_tru_tru']?></b>;</div>
+    <div class="stiloznachzvit">- ведеться робота з пошуку робочого місця для <b><?=$vedposhuk?></b>;</div>
+    <div class="stiloznachzvit">- відмовлено у наданні допомоги <b><?=$rezultat['pynkt_tru_piat']?></b>;</div>
+    <div class="stiloznachzvit">- надано <b><?=$rezultat['pynkt_tru_shist']?></b> консультацій</div>
 </div>
 <div class="stilozvit">
-    4. Направлено ... (звернутися) до:
-    <div class="stiloznachzvit">- місцевих органів державної влади <?=$choturu['pynkt_choturu_odun']?> осіб;</div>
-    <div class="stiloznachzvit">- центрів зайнятості <?=$choturu['pynkt_choturu_dva']?> осіб;</div>
-    <div class="stiloznachzvit">- громадських організацій <?=$choturu['pynkt_choturu_tru']?> осіб;</div>
-    <div class="stiloznachzvit">- приватних роботодавців <?=$choturu['pynkt_choturu_choturu']?> осіб;</div>
+    4. Направлено лист, клопотання(звернення) до:
+    <div class="stiloznachzvit">- місцевих органів державної влади <b><?=$choturu['pynkt_choturu_odun']?></b> ;</div>
+    <div class="stiloznachzvit">- центрів зайнятості <b><?=$choturu['pynkt_choturu_dva']?></b> ;</div>
+    <div class="stiloznachzvit">- громадських організацій <b><?=$choturu['pynkt_choturu_tru']?></b> ;</div>
+    <div class="stiloznachzvit">- приватних роботодавців <b><?=$choturu['pynkt_choturu_choturu']?></b> ;</div>
 </div>
 <div class="stilozvit">
-    5. Соціальний супровід проводиться з <?=$rezultat['pynkt_piat']?> клієнтами.
+    5. Соціальний супровід проводиться з <b><?=$rezultat['pynkt_piat']?></b> клієнтами.
 </div>
 </div>
-<br><br><br><br><br>
-<div class="row">
+<div class="row hide">
     <a href="" class="thumbnail">
         <h6>
-            <i class="fa fa-file-pdf-o fa-3x" aria-hidden="true"> Сформувати PDF файл</i>
+            <i class="fa fa-file-pdf-o fa-3x" aria-hidden="true"> Вигрузити в файл</i>
         </h6>
     </a>
 </div>

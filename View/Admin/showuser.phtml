@@ -1,17 +1,17 @@
 
-<h2>Анкета</h2>
-<a href="/userupdate/<?= $user['id'] ?>" class="btn btn-primary" role="button">Змінити дані працівника</a><br><br>
 
-Прізвище:<?= $user['surname'] ?><br>
-Ім'я:<?= $user['username'] ?><br>
-По-батькові:<?= $user['father'] ?><br>
-Регіон:<?= $user['id_region'] ?><br>
-Працює з:<?= $user['startwork'] ?><br>
-Контакти:<?= $user['contact'] ?><br>
+<a href="/userupdate/<?= $user['id'] ?>" class="btn btn-primary" role="button"><b>Змінити дані працівника</b></a><br><br>
+<h3>
+Прізвище:<b><?= $user['surname'] ?></b><br>
+Ім'я:<b><?= $user['username'] ?></b><br>
+По-батькові:<b><?= $user['father'] ?></b><br>
+Регіон:<b><?= $user['id_region'] ?></b><br>
+Працює з:<b><?= $user['startwork'] ?></b><br>
+Контакти:<b><?= $user['contact'] ?></b><br>
 
-Статус:<?php if ($user['status']==1){echo 'адміністратор';}
+Статус:<b><?php if ($user['status']==1){echo 'адміністратор';}
 elseif ($user['status']==2){echo 'керівник регіону';}
-else{echo 'користувач';}?><br>
-E-mail:<?= $user['email'] ?><br>
-<?php  echo '<img src="data:image/jpeg;base64,'.base64_encode($user['foto']).'" />'; ?><br>
-<br><hr><br>
+else{echo 'користувач';}?></b><br>
+E-mail:<b><?= $user['email'] ?></b><br>
+</h3>
+<?php if (isset($user['foto'])){echo '<img src="data:image/jpeg;base64,'.base64_encode($user['foto']).'" />';};?>

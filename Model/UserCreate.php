@@ -18,6 +18,7 @@ class UserCreate
     public $status='admin';
     public $email;
     public $password;
+    public $passworddabl;
 
     /**
      * UserCreate constructor.
@@ -35,6 +36,7 @@ class UserCreate
         $this->status = $request->post('status');
         $this->email = $request->post('email');
         $this->password = $request->post('password');
+        $this->passworddabl = $request->post('passworddabl');
     }
 
     public function showuser($id_user)
@@ -66,7 +68,8 @@ class UserCreate
 //        $this->foto &&
         $this->status !== '' &&
         $this->email !== '' &&
-        $this->password !== '');
+        $this->password !== '' &&
+        $this->password === $this->passworddabl);
         
         
 //        $res = $this->username !== '' && $this->email !== '' && $this->message !== '';
@@ -93,9 +96,7 @@ class UserCreate
 
         $regs = $sth->fetchAll(\PDO::FETCH_ASSOC);
 
-        if (!$regs) {
-            throw new NotFoundException('Books not found');
-        }
+     
 
         return $regs;
     }

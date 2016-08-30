@@ -69,9 +69,7 @@ class MoreSkillsCreateModel
 
         $regs = $sth->fetchAll(\PDO::FETCH_ASSOC);
 
-        if (!$regs) {
-            throw new NotFoundException('Books not found');
-        }
+
 
         return $regs;
     }

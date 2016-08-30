@@ -12,33 +12,33 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
         <h4>
-            <form method="post" class="form-horizontal">
+            <form method="post" class="form-horizontal" id="jobseekercreate">
                 <fieldset>
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Прізвище:</label>
                         <div class="col-sm-8">
-                            <input type="text"  name="surname" class="form-control" value="<?=$oldjobseeker['surname']?>">
+                            <input type="text"  name="surname" id="surname" class="form-control" value="<?=$oldjobseeker['surname']?>">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Ім'я:</label>
                         <div class="col-sm-8">
-                            <input type="text" name="jobseekername" class="form-control" value="<?=$oldjobseeker['jobseekername']?>">
+                            <input type="text" name="jobseekername" id="jobseekername" class="form-control" value="<?=$oldjobseeker['jobseekername']?>">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-4 control-label">По-батькові:</label>
                         <div class="col-sm-8">
-                            <input type="text" name="father" class="form-control" value="<?=$oldjobseeker['father']?>">
+                            <input type="text" name="father" id="father" class="form-control" value="<?=$oldjobseeker['father']?>">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Дата народження:</label>
                         <div class="col-sm-8">
-                            <input type="date" name="birthdate" class="form-control" value="<?=$oldjobseeker['birthdate']?>">
+                            <input type="date" name="birthdate" id="birthdate" class="form-control" value="<?=$oldjobseeker['birthdate']?>">
                         </div>
                     </div>
 
@@ -71,7 +71,7 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Адреса:</label>
                         <div class="col-sm-8">
-                            <input type="text" name="adress" class="form-control" value="<?=$oldjobseeker['adress']?>">
+                            <input type="text" name="adress" id="adress" class="form-control" value="<?=$oldjobseeker['adress']?>">
                         </div>
                     </div>
 
@@ -80,7 +80,7 @@
                         <div class="col-sm-8">
                             <div class="input-group">
                                 <div class="input-group-addon">+38</div>
-                                <input type="text" name="contact" class="form-control" value="<?=$oldjobseeker['contact']?>">
+                                <input type="text" name="contact" id="contact" class="form-control" value="<?=$oldjobseeker['contact']?>">
                             </div>
                         </div>
                     </div>

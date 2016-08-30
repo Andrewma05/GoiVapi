@@ -14,12 +14,10 @@ abstract class Controller
         if($b==null){
            $layout = 'login_layout.phtml';
         } elseif ($b==1){
-           $layout = 'default_layout.phtml';
+           $layout = 'admin_layout.phtml';
         } elseif ($b==2){
-           $layout = 'manager_layout.phtml';
-        } elseif ($b==3){
-           $layout = 'user_layout.phtml';
-        } else {
+           $layout = 'default_layout.phtml';
+        }  else {
            $layout = 'login_layout.phtml';
         }
 

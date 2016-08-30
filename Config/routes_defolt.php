@@ -5,9 +5,10 @@ use Library\Route;
 return  array(
     
 
-    'firstpage' => new Route('/', 'Admin', 'firstpage'),
+
+    'firstpage' => new Route('/', 'Admin', 'firstpageuser'),
     'thirdpage' => new Route('/thirdpage', 'Admin', 'thirdpage'),
-    'usercreate' => new Route('/usercreate', 'Admin', 'usercreate'),
+//    'usercreate' => new Route('/usercreate', 'Admin', 'usercreate'),
     'jobseekercreate' => new Route('/jobseekercreate', 'Admin', 'jobseekercreate'),
     'educationcreate' => new Route('/educationcreate/{id}', 'Admin', 'educationcreate', array('id' => '[0-9]+')),
     'experiencecreate' => new Route('/experiencecreate/{id}', 'Admin', 'experiencecreate', array('id' => '[0-9]+')),
@@ -17,7 +18,7 @@ return  array(
     'jobsearchcreate' => new Route('/jobsearchcreate/{id}', 'Admin', 'jobsearchcreate', array('id' => '[0-9]+')),
     'showjobsearch' => new Route('/showjobsearch/{id}', 'Admin', 'showjobsearch', array('id' => '[0-9]+')),
     'alljobseekeres' => new Route('/alljobseekeres', 'Admin', 'alljobseekeres'),
-    'alluseres' => new Route('/alluseres', 'Admin', 'alluseres'),
+//    'alluseres' => new Route('/alluseres', 'Admin', 'alluseres'),
     'showuser' => new Route('/showuser/{id}', 'Admin', 'showuser', array('id' => '[0-9]+')),
     'companycreate' => new Route('/companycreate/{id}', 'Admin', 'companycreate', array('id' => '[0-9]+')),
     'showallcompany' => new Route('/showallcompany/{id}', 'Admin', 'showallcompany', array('id' => '[0-9]+')),

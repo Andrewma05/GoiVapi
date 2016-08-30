@@ -33,6 +33,7 @@
                 Номер телефону: <span class="slabelanketa"><?= $seekers['contact'] ?></span><br>
                 E-mail: <span class="slabelanketa"><?= $seekers['email'] ?></span><br>
                 Група інвалідності: <span class="slabelanketa"> <?=$seekers['grup']?></span><br>
+                Вид інвалідності: <span class="slabelanketa"> <?=$seekers['vud']?></span><br>
                Звільнення з останнього місця роботи: <span class="slabelanketa"><?= $seekers['freedate'] ?></span><br>
             </div>
         </h3>
@@ -45,7 +46,8 @@
             <!--<div class="text-right"><a  class="btn btn-warning" role="button">Працевлаштовано</a>-->
             <div class=" col-md-offset-5 col-md-7"><a href="/pratsevlashtovano/<?= $seekers['id'] ?>" class="btn btn-warning btn-block" role="button"><i class="fa fa-check-square-o" aria-hidden="true"></i> Працевлаштовано</a><br></div>
             <div class=" col-md-offset-5 col-md-7"> <a href="/vidmovleno/<?= $seekers['id'] ?>" class="btn btn-danger btn-block" role="button"><i class="fa fa-ban" aria-hidden="true"></i> Відмовлено</a><br></div>
-        <div class=" col-md-offset-5 col-md-7"><a href="/napravleno/<?= $seekers['id'] ?>" class="btn btn-info btn-block" role="button"><i class="fa fa-university" aria-hidden="true"></i> Направлено</a></div>
+            <div class=" col-md-offset-5 col-md-7"><a href="/napravleno/<?= $seekers['id'] ?>" class="btn btn-info btn-block" role="button"><i class="fa fa-envelope" aria-hidden="true"></i> Направлено лист</a><br></div>
+        <div class=" col-md-offset-5 col-md-7"><a href="/povtornezvernenia/<?= $seekers['id'] ?>" class="btn btn-danger btn-block" role="button"><i class="fa fa-backward" aria-hidden="true"></i> Повторне звернення</a></div>
 
 <!--        </div>-->
 
@@ -258,7 +260,7 @@
         <h1  id="dowork">Пророблена робота</h1>
         <a href="/moremadecreate/<?= $seekers['id'] ?>" class="btn btn-primary" role="button">Додати нові дії</a>
         <a href="/vidmovleno/<?= $seekers['id'] ?>" class="btn btn-danger" role="button">Відмовлено</a>
-        <a href="/napravleno/<?= $seekers['id'] ?>" class="btn btn-info" role="button">Направлено</a>
+        <a href="/napravleno/<?= $seekers['id'] ?>" class="btn btn-info" role="button">Направлено лист, клопотання (звернення)</a>
         <a href="/pratsevlashtovano/<?= $seekers['id'] ?>" class="btn btn-warning" role="button">Працевлаштовано</a>
         <br>
         <h3 class="svalueanketa">
@@ -278,7 +280,7 @@
                                 };?>
                                 <span><?=$moremade['made']?></span><br>
                                 <div class="text-right"><a href="/moremadeupdate/<?=$moremade['id']?>" class="btn btn-success" role="button">Редагувати</a>
-                                    <?php if ($moremade['vuddialnosti']!=='Працевлаштовано' and $moremade['vuddialnosti']!=='Відмовлено'){
+                                    <?php if ($moremade['vuddialnosti']!=='Працевлаштовано' and $moremade['vuddialnosti']!=='Відмовлено' and $moremade['vuddialnosti']!=='Повторне звернення'){
                                      ?> <a class="btn btn-danger moremade<?=$moremade['id']?>" role="button"><i class="fa fa-trash" aria-hidden="true"></i> Видалити</a></div><?php }?>
                             </td>
                         </tr>

@@ -17,12 +17,7 @@ class DeleteModel
         $sql = "DELETE FROM experience WHERE id = '$ident'";
         $s = $db->prepare($sql);
         $s->execute();
-
-//        var_dump($s);
-//        die;
         
-
-
     }
 
 

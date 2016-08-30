@@ -21,7 +21,7 @@ abstract class Router
         } elseif ($a==1) {
             self::$map = require(CONF_DIR . 'routes_admin.php');
         } elseif ($a==2){
-            self::$map = require(CONF_DIR . 'routes_manager.php');
+            self::$map = require(CONF_DIR . 'routes_defolt.php');
         } else {
             self::$map = require(CONF_DIR . 'routes_login.php');
         };

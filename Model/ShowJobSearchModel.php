@@ -12,7 +12,8 @@ class ShowJobSearchModel
     {
         $db = DbConnection::getInstance()->getPdo();
 
-        $sql = "SELECT * FROM job_seekers WHERE id = '$jobseeker'";
+//        $sql = "SELECT * FROM job_seekers WHERE id = '$jobseeker'";
+        $sql = "SELECT * FROM job_seekers LEFT JOIN vud_inval ON job_seekers.id_vud_inval = vud_inval.id WHERE job_seekers.id='$jobseeker'";
         
         // $sth = $db->query('SELECT * FROM book WHERE status = 1 ORDER BY price DESC ');
         $norm = $db->query("SET NAMES 'utf8'");
@@ -23,9 +24,7 @@ class ShowJobSearchModel
         $regs = $sth->fetchAll(\PDO::FETCH_ASSOC);
 
 
-        if (!$regs) {
-            throw new NotFoundException('Шукача роботи не знайдено');
-        }
+       
         
         return $regs;
     }

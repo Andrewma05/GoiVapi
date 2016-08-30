@@ -1,32 +1,42 @@
-<form method="post">
-    <fieldset>
-        <legend>Добавити пророблену роботу:</legend>
-        <label>
-            <select name="id_company">
-                <option value="1">
-                    Місцеві органи державної влади
-                </option>
-                <option value="2">
-                    Центри зайнятості
-                </option>
-                <option value="3">
-                    Громадські об'єднання
-                </option>
-                <option value="4">
-                    Приватний бізнес
-                </option>
-            </select>
-        </label>
-        <label>Коментар
-            <input type="text" name="made" value="<?=$form->made?>">
-        </label>
+<div class="page-header">
+    <h2>Направлено лист, клопотання (звернення)</h2>
+</div>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <form method="post" class="form-horizontal">
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Організація установа:</label>
+                    <div class="col-md-8">
+                        <select name="id_company" class="form-control" tabindex="1" autofocus>
+                            <option value="1">
+                                Місцеві органи державної влади
+                            </option>
+                            <option value="2">
+                                Центри зайнятості
+                            </option>
+                            <option value="3">
+                                Громадські об'єднання
+                            </option>
+                            <option value="4">
+                                Приватний бізнес
+                            </option>
+                        </select>
+                    </div>
+                </div>
 
-
-
-
-    </fieldset>
-    <button>Зберегти</button>
-</form>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Коментар:</label>
+                    <div class="col-md-8">
+                        <input type="text" name="made" class="form-control" tabindex="2" value="<?=$form->made?>">
+                    </div>
+                </div>
+            </fieldset>
+            <button class="btn btn-success btn-lg" type="submit"><i class="fa fa-plus-circle" aria-hidden="true"></i> Направлено</button>
+            <a href="/showjobsearch/<?=$form->id_jobseekers?>" class="btn btn-danger btn-lg" role="button"><i class="fa fa-ban" aria-hidden="true"></i> Відмінити</a>
+        </form>
+     </div>
+</div>
 
 <b id="flash"><?=\Library\Session::getFlash()?></b>
 
